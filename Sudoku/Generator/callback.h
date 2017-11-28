@@ -13,10 +13,8 @@
  In searching this function, it appears to be a Swift function unavailable in C. So I need to
  call a swift function that will return a random value so my generator will work.
  
- I am using this stack overflow for my first attempt to solve this problem. The OP's solution is used.
+ I am using this stack overflow OP's solution, as no one provided them with a better method.
  https://stackoverflow.com/questions/35106118/what-is-the-best-way-to-call-into-swift-from-c
- 
- https://oleb.net/blog/2015/06/c-callbacks-in-swift/
  */
 
 
@@ -25,6 +23,6 @@
 
 
 typedef int (*swiftFuncPtr)(void);
-void callBackIntoSwift( swiftFuncPtr cb );
+//void callBackIntoSwift( swiftFuncPtr cb );
 
 #endif /* callback_h */

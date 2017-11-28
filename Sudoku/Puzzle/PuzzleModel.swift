@@ -15,22 +15,21 @@ class PuzzleModel {
     private let difficulty: Int
     private var undoHistory = [Cell]()
     
-    let cb: swiftFuncPtr = {
-        print("Using a Swift Function")
+    let getSwiftyRandom: swiftFuncPtr = { 
         return Int32(arc4random_uniform(UInt32(Int32.max)))
     }
     
     // MARK: - Methods
     init(targetScore: Int32) {
-        callBackIntoSwift( cb )
+        // callBackIntoSwift( cb )
         // obtain valid solution
-        let data: UnsafeMutablePointer<UInt8> = generateSolution()
+        let data: UnsafeMutablePointer<UInt8> = generateSolution(getSwiftyRandom)
         let generatedSolution = Array(UnsafeBufferPointer(start: data, count: 81))
         // obtain puzzle from given solution and save difficulty value
         let generatedPuzzle = Array(UnsafeBufferPointer(start: data, count: 81))
         let solutionPointer = UnsafeMutablePointer<UInt8>(mutating: generatedSolution)
         let puzzlePointer = UnsafeMutablePointer<UInt8>(mutating: generatedPuzzle)
-        difficulty = Int(harden_puzzle(solutionPointer, puzzlePointer, MAX_ITER, MAX_SCORE, targetScore))
+        difficulty = Int(generatePuzzle(solutionPointer, puzzlePointer, MAX_ITER, MAX_SCORE, targetScore))
         
         // save puzzle and solution
         solution = generatedSolution.map{Int($0)}

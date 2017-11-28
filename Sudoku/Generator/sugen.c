@@ -44,13 +44,14 @@
 #define ELEMENTS    (DIM * DIM)
 
 /************************************************************************/
- 
-void callBackIntoSwift( swiftFuncPtr cb )
-{
-    printf( "Will call back into Swift\n" );
-    int result = cb();
-    printf( "Did call back into Swift: %d\n", result );
-}
+// MARK: - Swift Function Pointer
+swiftFuncPtr getSwiftyRandom;
+//void callBackIntoSwift( swiftFuncPtr cb )
+//{
+//    printf( "Will call back into Swift\n" );
+//    int result = cb();
+//    printf( "Did call back into Swift: %d\n", result );
+//}
 /************************************************************************
  * Parsing and printing
  *
@@ -253,6 +254,7 @@ void callBackIntoSwift( swiftFuncPtr cb )
  * unsolvable.
  */
 
+// MARK: - Puzzle Generation Methods
 typedef uint16_t set_t;
 
 #define SINGLETON(v) (1 << ((v) - 1))
@@ -501,6 +503,8 @@ static int sofa(const uint8_t *grid, const set_t *freedom, int *set, int *value)
  * is the first power of ten greater than the number of elements.
  */
 
+// MARK: Solution Generation Methods
+
 struct solve_context {
     uint8_t        problem[ELEMENTS];
     int        count;
@@ -634,7 +638,8 @@ static int solve(const uint8_t *problem, uint8_t *solution, int *diff)
 
 static int pick_value(set_t set)
 {
-    int x = random() % count_bits(set);
+    //int x = random() % count_bits(set);
+    int x = getSwiftyRandom() % count_bits(set); // see callback.h for comments
     int i;
     
     for (i = 0; i < DIM; i++)
@@ -818,8 +823,9 @@ static void choose_grid(uint8_t *grid)
 
 // static int harden_puzzle(const uint8_t *solution, uint8_t *puzzle,
 //                  int max_iter, int max_score, int target_score)
-/* return type modified from original function */
-int harden_puzzle(const uint8_t *solution, uint8_t *puzzle,
+
+// MARK: - Methods Called from Swift
+int generatePuzzle(const uint8_t *solution, uint8_t *puzzle,
                          int max_iter, int max_score, int target_score)
 {
     int best = 0;
@@ -834,10 +840,12 @@ int harden_puzzle(const uint8_t *solution, uint8_t *puzzle,
         memcpy(next, puzzle, sizeof(next));
         
         for (j = 0; j < DIM * 2; j++) {
-            int c = random() % ELEMENTS;
+            //int c = random() % ELEMENTS;
+            int c = getSwiftyRandom() % ELEMENTS;
             int s;
             
-            if (random() & 1) {
+           // if (random() & 1) {
+            if (getSwiftyRandom() & 1){
                 next[c] = solution[c];
                 next[ELEMENTS - c - 1] =
                 solution[ELEMENTS - c - 1];
@@ -1039,8 +1047,10 @@ int harden_puzzle(const uint8_t *solution, uint8_t *puzzle,
 //    return 0;
 //}
 
-uint8_t* generateSolution() /* modified version of action_gen_grid for returning data to app */
+uint8_t* generateSolution(swiftFuncPtr cb) /* modified version of action_gen_grid for returning data to app */
 {
+    getSwiftyRandom = cb;
+    
     uint8_t* solution = malloc(sizeof(uint8_t)*ELEMENTS);
     choose_grid(solution);
     return solution;
