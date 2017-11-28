@@ -15,8 +15,9 @@ class PuzzleModel {
     private let difficulty: Int
     private var undoHistory = [Cell]()
     
-    let cb: callback_t = {
+    let cb: swiftFuncPtr = {
         print("Using a Swift Function")
+        return Int32(arc4random_uniform(UInt32(Int32.max)))
     }
     
     // MARK: - Methods

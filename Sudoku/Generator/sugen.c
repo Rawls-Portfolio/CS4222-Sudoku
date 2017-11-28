@@ -45,11 +45,11 @@
 
 /************************************************************************/
  
-void callBackIntoSwift( callback_t cb )
+void callBackIntoSwift( swiftFuncPtr cb )
 {
     printf( "Will call back into Swift\n" );
-    cb();
-    printf( "Did call back into Swift\n" );
+    int result = cb();
+    printf( "Did call back into Swift: %d\n", result );
 }
 /************************************************************************
  * Parsing and printing

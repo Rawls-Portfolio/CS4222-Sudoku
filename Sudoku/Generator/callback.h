@@ -24,7 +24,7 @@
 #define callback_h
 
 
-typedef void (*callback_t)(void);
-void callBackIntoSwift( callback_t cb );
+typedef int (*swiftFuncPtr)(void);
+void callBackIntoSwift( swiftFuncPtr cb );
 
 #endif /* callback_h */
