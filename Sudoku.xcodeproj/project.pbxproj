@@ -14,6 +14,7 @@
 		26A6AF321FC7E888001827BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26A6AF311FC7E888001827BA /* Assets.xcassets */; };
 		26A6AF351FC7E888001827BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26A6AF331FC7E888001827BA /* LaunchScreen.storyboard */; };
 		26A6AF401FC7E888001827BA /* SudokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6AF3F1FC7E888001827BA /* SudokuTests.swift */; };
+		26A6AF4D1FC7E89C001827BA /* sugen.c in Sources */ = {isa = PBXBuildFile; fileRef = 26A6AF4C1FC7E89C001827BA /* sugen.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		26A6AF3B1FC7E888001827BA /* SudokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26A6AF3F1FC7E888001827BA /* SudokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuTests.swift; sourceTree = "<group>"; };
 		26A6AF411FC7E888001827BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26A6AF4B1FC7E89B001827BA /* Sudoku-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sudoku-Bridging-Header.h"; sourceTree = "<group>"; };
+		26A6AF4C1FC7E89C001827BA /* sugen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sugen.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,7 @@
 		26A6AF261FC7E888001827BA /* Sudoku */ = {
 			isa = PBXGroup;
 			children = (
+				26A6AF4A1FC7E88F001827BA /* Generator */,
 				26A6AF271FC7E888001827BA /* AppDelegate.swift */,
 				26A6AF291FC7E888001827BA /* ViewController.swift */,
 				26A6AF2B1FC7E888001827BA /* Main.storyboard */,
@@ -97,6 +101,15 @@
 				26A6AF411FC7E888001827BA /* Info.plist */,
 			);
 			path = SudokuTests;
+			sourceTree = "<group>";
+		};
+		26A6AF4A1FC7E88F001827BA /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				26A6AF4C1FC7E89C001827BA /* sugen.c */,
+				26A6AF4B1FC7E89B001827BA /* Sudoku-Bridging-Header.h */,
+			);
+			path = Generator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +162,7 @@
 				TargetAttributes = {
 					26A6AF231FC7E888001827BA = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 					26A6AF3A1FC7E888001827BA = {
@@ -204,6 +218,7 @@
 			files = (
 				26A6AF2A1FC7E888001827BA /* ViewController.swift in Sources */,
 				26A6AF301FC7E888001827BA /* Sudoku.xcdatamodeld in Sources */,
+				26A6AF4D1FC7E89C001827BA /* sugen.c in Sources */,
 				26A6AF281FC7E888001827BA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,11 +372,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Sudoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rawls.Sudoku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sudoku/Generator/Sudoku-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -371,11 +389,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Sudoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rawls.Sudoku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sudoku/Generator/Sudoku-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

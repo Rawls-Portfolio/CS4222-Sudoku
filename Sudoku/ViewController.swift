@@ -12,7 +12,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // obtain solution
+        let data: UnsafeMutablePointer<UInt8> = generateSolution()
+        let solution = Array(UnsafeBufferPointer(start: data, count: 81))
+        
+        // obtain puzzle
+        let puzzle = Array(UnsafeBufferPointer(start: data, count: 81))
+        let difficulty = harden_puzzle(UnsafeMutablePointer<UInt8>(mutating: solution), UnsafeMutablePointer<UInt8>(mutating: puzzle), MAX_ITER, MAX_SCORE, 170)
+        
+        free(data)
     }
 
     override func didReceiveMemoryWarning() {
