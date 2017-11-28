@@ -3,6 +3,7 @@
 //
 
 #include <inttypes.h>
+#include "callback.h"
 #define MAX_ITER 200
 #define MAX_SCORE -1
 

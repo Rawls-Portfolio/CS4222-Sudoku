@@ -22,6 +22,7 @@
 #include <string.h>
 #include <time.h>
 #include <getopt.h>
+#include "callback.h"
 
 /* Compile this program with:
  *
@@ -42,8 +43,16 @@
 #define DIM        (ORDER * ORDER)
 #define ELEMENTS    (DIM * DIM)
 
+/************************************************************************/
+ 
+void callBackIntoSwift( callback_t cb )
+{
+    printf( "Will call back into Swift\n" );
+    cb();
+    printf( "Did call back into Swift\n" );
+}
 /************************************************************************
- * Parsing and printin	g
+ * Parsing and printing
  *
  * The parser is quite forgiving and designed so that it can also parse
  * grids produced by the pretty-printer.

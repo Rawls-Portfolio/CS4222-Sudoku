@@ -33,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2639B1051FCD566000F3C6D7 /* callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = callback.h; sourceTree = "<group>"; };
 		267F23DB1FCD1B9E0069282B /* PuzzleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleModel.swift; sourceTree = "<group>"; };
 		267F23DD1FCD1C540069282B /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
 		267F23DF1FCD216D0069282B /* PuzzleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewCell.swift; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				26A6AF4C1FC7E89C001827BA /* sugen.c */,
+				2639B1051FCD566000F3C6D7 /* callback.h */,
 				26A6AF4B1FC7E89B001827BA /* Sudoku-Bridging-Header.h */,
 			);
 			path = Generator;

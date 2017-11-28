@@ -15,13 +15,16 @@ class PuzzleModel {
     private let difficulty: Int
     private var undoHistory = [Cell]()
     
+    let cb: callback_t = {
+        print("Using a Swift Function")
+    }
     
     // MARK: - Methods
     init(targetScore: Int32) {
+        callBackIntoSwift( cb )
         // obtain valid solution
         let data: UnsafeMutablePointer<UInt8> = generateSolution()
         let generatedSolution = Array(UnsafeBufferPointer(start: data, count: 81))
-        
         // obtain puzzle from given solution and save difficulty value
         let generatedPuzzle = Array(UnsafeBufferPointer(start: data, count: 81))
         let solutionPointer = UnsafeMutablePointer<UInt8>(mutating: generatedSolution)
