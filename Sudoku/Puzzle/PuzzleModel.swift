@@ -21,7 +21,6 @@ class PuzzleModel {
     
     // MARK: - Methods
     init(targetScore: Int32) {
-        // callBackIntoSwift( cb )
         // obtain valid solution
         let data: UnsafeMutablePointer<UInt8> = generateSolution(getSwiftyRandom)
         let generatedSolution = Array(UnsafeBufferPointer(start: data, count: 81))

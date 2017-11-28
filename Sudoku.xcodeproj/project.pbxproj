@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		264A63FF1FCDF885000A9867 /* SudokuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264A63FE1FCDF885000A9867 /* SudokuLayout.swift */; };
 		267F23DC1FCD1B9E0069282B /* PuzzleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267F23DB1FCD1B9E0069282B /* PuzzleModel.swift */; };
 		267F23DE1FCD1C540069282B /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267F23DD1FCD1C540069282B /* DataTypes.swift */; };
 		267F23E01FCD216D0069282B /* PuzzleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267F23DF1FCD216D0069282B /* PuzzleViewCell.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		2639B1051FCD566000F3C6D7 /* callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = callback.h; sourceTree = "<group>"; };
+		264A63FE1FCDF885000A9867 /* SudokuLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuLayout.swift; sourceTree = "<group>"; };
 		267F23DB1FCD1B9E0069282B /* PuzzleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleModel.swift; sourceTree = "<group>"; };
 		267F23DD1FCD1C540069282B /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
 		267F23DF1FCD216D0069282B /* PuzzleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				26A6AF291FC7E888001827BA /* PuzzleViewController.swift */,
+				264A63FE1FCDF885000A9867 /* SudokuLayout.swift */,
 				267F23DB1FCD1B9E0069282B /* PuzzleModel.swift */,
 				267F23E31FCD229E0069282B /* Cell */,
 			);
@@ -263,6 +266,7 @@
 				267F23E51FCD22C50069282B /* SolutionView.swift in Sources */,
 				26A6AF301FC7E888001827BA /* Sudoku.xcdatamodeld in Sources */,
 				267F23DE1FCD1C540069282B /* DataTypes.swift in Sources */,
+				264A63FF1FCDF885000A9867 /* SudokuLayout.swift in Sources */,
 				267F23E01FCD216D0069282B /* PuzzleViewCell.swift in Sources */,
 				26A6AF4D1FC7E89C001827BA /* sugen.c in Sources */,
 				26A6AF281FC7E888001827BA /* AppDelegate.swift in Sources */,

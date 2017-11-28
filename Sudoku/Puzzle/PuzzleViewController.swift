@@ -21,6 +21,8 @@ class PuzzleViewController: UIViewController {
         super.viewDidLoad()
         model = PuzzleModel(targetScore: 170)
         puzzleCollectionView.dataSource = self
+        puzzleCollectionView.layer.borderColor = UIColor.green.cgColor
+        puzzleCollectionView.layer.borderWidth = 2
     }
 }
 
@@ -38,6 +40,6 @@ extension PuzzleViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.decorate(with: model.getCell(for: indexPath.row))
         return cell
     }
-    
+
     
 }
