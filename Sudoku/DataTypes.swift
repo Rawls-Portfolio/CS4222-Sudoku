@@ -1,0 +1,93 @@
+//
+//  DataTypes.swift
+//  Sudoku
+//
+//  Created by Amanda Rawls on 11/27/17.
+//  Copyright © 2017 Amanda Rawls. All rights reserved.
+//
+
+import Foundation
+
+struct Cell {
+    let position: Position
+    let notes: [Value?]
+    let solution: Value?
+    let mode: Mode
+}
+
+struct Position {
+    let row: Int
+    let col: Int
+    let block: Int
+    
+    init(arrayIndex: Int){
+        col = arrayIndex % 9
+        row = arrayIndex / 9
+        switch(arrayIndex + 1){
+        case 1...3, 10...12, 19...21:
+            block = 1
+        case 4...6, 13...15, 22...24:
+            block = 2
+        case 7...9, 16...18, 25...27:
+            block = 3
+        case 28...30, 37...39, 46...48:
+            block = 4
+        case 31...33, 40...42, 49...51:
+            block = 5
+        case 34...36, 43...45, 52...54:
+            block = 6
+        case 55...57, 64...66, 73...75:
+            block = 7
+        case 58...60, 67...69, 76...78:
+            block = 8
+        case 61...63, 70...72, 79...81:
+            block = 9
+        default:
+            block = 0;
+            print("Error: Invalid block assignment")
+        }
+    }
+}
+
+enum Mode {
+    case editable, permanent
+}
+
+enum Value: String{
+    case one = "1"
+    case two = "2"
+    case three = "3"
+    case four = "4"
+    case five = "5"
+    case six = "6"
+    case seven = "7"
+    case eight = "8"
+    case nine = "9"
+    var index: Int { // to save my brain when accessing array position
+        return self.hashValue
+    }
+    var digit: Int {
+        return self.hashValue + 1
+    }
+    static func of(_ integer: Int)-> Value? {
+        switch(integer){
+        case 1: return .one
+        case 2: return .two
+        case 3: return .three
+        case 4: return .four
+        case 5: return .five
+        case 6: return .six
+        case 7: return .seven
+        case 8: return .eight
+        case 9: return .nine
+        default: return nil
+        }
+    }
+//    static func notes()-> [Value] {
+//        var notes = [Value]()
+//        for value in 1...9 {
+//            notes.append(Value.of(value)!)
+//        }
+//        return notes
+//    }
+}
