@@ -4,14 +4,15 @@
 //
 //  Created by Amanda Rawls on 11/28/17.
 //  Copyright © 2017 Amanda Rawls. All rights reserved.
-//  assist: https://www.raywenderlich.com/164608/uicollectionview-custom-layout-tutorial-pinterest-2
+//  layout assist: https://www.raywenderlich.com/164608/uicollectionview-custom-layout-tutorial-pinterest-2
+//  decoration view assist (matt's answer): https://stackoverflow.com/questions/12810628/uicollectionview-decoration-view
 
 import UIKit
 
 class SudokuLayout: UICollectionViewLayout {
     private var numberOfColumns = 9
     private var numberOfRows = 9
-    private var cellPadding : CGFloat = 0
+    private var cellPadding : CGFloat = 1
     private var cache = [UICollectionViewLayoutAttributes]()
     private var contentWidth : CGFloat {
         guard let collectionView = collectionView else {

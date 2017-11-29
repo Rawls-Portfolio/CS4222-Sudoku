@@ -10,7 +10,10 @@ import UIKit
 
 class PuzzleViewCell: UICollectionViewCell {
     // MARK: - Properties
-    private var position: Position?
+    private var _position: Position?
+    var position: Position? {
+        return _position
+    }
     
     // MARK: - IBOutlets
     @IBOutlet weak var notes: NotesView!
@@ -30,7 +33,7 @@ class PuzzleViewCell: UICollectionViewCell {
     func decorate(with cell: Cell){
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.borderWidth = 1
-        self.position = cell.position
+        self._position = cell.position
         self.notes.labels.forEach{$0.isHidden = true}
         self.solution.label.text = cell.solution?.rawValue ?? " "
     }

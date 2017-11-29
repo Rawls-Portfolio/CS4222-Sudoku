@@ -20,6 +20,10 @@ struct Position {
     let col: Int
     let block: Int
     
+    var description: String {
+        return "Row: \(row + 1), Col: \(col + 1), Block: \(block)"
+    }
+    
     init(arrayIndex: Int){
         col = arrayIndex % 9
         row = arrayIndex / 9
