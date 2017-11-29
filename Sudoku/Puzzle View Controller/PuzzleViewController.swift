@@ -15,12 +15,14 @@ class PuzzleViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var puzzleCollectionView: UICollectionView!
+    @IBOutlet weak var menu: MenuView!
     
     //MARK: - View Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         model = PuzzleModel(targetScore: 170)
         preparePuzzleCollectionView()
+        menu.prepareButtons()
     }
     
     func preparePuzzleCollectionView() {
@@ -64,7 +66,7 @@ class PuzzleViewController: UIViewController {
     // TODO: long press on a selected cell will display an animated pop-up menu.
     
      @objc func cellLongPressed(gesture: UITapGestureRecognizer) {
-        if gesture.state != .began {
+        if gesture.state != .ended {
             return
         }
         guard let position = getCellPosition(atPoint: gesture.location(in: puzzleCollectionView)) else {
