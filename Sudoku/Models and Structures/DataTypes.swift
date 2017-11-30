@@ -50,30 +50,62 @@ struct Position {
         return "Row: \(row + 1), Col: \(col + 1), Block: \(block)"
     }
     
+    var rowIndices: (Int) -> [Int] = {(row) in
+        var indices = [Int]()
+        let startOfRow = 9 * row
+        for index in startOfRow..<startOfRow+9{
+            indices.append(index)
+        }
+        return indices
+    }
+    
+    var colIndices: (Int) -> [Int] = {(col) in
+        var indices = [Int]()
+        for multiplier in 0..<9 {
+            indices.append(multiplier * 9 + col)
+        }
+        return indices
+    }
+    
+    var blockIndices: (Int) -> [Int] = {(block) in
+        switch (block){
+        case 0: return [0, 1, 2, 9, 10, 11, 18, 19, 20]
+        case 1: return [3, 4, 5, 12, 13, 14, 21, 22, 23]
+        case 2: return [6, 7, 8, 15, 16, 17, 24, 25, 26]
+        case 3: return [27, 28, 29, 36, 37, 38, 45, 46, 47]
+        case 4: return [30, 31, 32, 39, 40, 41, 48, 49, 50]
+        case 5: return [33, 34, 35, 42, 43, 44, 51, 52, 53]
+        case 6: return [54, 55, 56, 63, 64, 65, 72, 73, 74]
+        case 7: return [57, 58, 59, 66, 67, 68, 75, 76, 77]
+        case 8: return [60, 61, 62, 69, 70, 71, 78, 79, 80]
+        default: return []
+        }
+    }
+    
     init(arrayIndex: Int){
         col = arrayIndex % 9
         row = arrayIndex / 9
-        switch(arrayIndex + 1){
-        case 1...3, 10...12, 19...21:
+        switch(arrayIndex){
+        case let x where blockIndices(0).contains(x):
+            block = 0
+        case let x where blockIndices(1).contains(x):
             block = 1
-        case 4...6, 13...15, 22...24:
+        case let x where blockIndices(2).contains(x):
             block = 2
-        case 7...9, 16...18, 25...27:
+        case let x where blockIndices(3).contains(x):
             block = 3
-        case 28...30, 37...39, 46...48:
+        case let x where blockIndices(4).contains(x):
             block = 4
-        case 31...33, 40...42, 49...51:
+        case let x where blockIndices(5).contains(x):
             block = 5
-        case 34...36, 43...45, 52...54:
+        case let x where blockIndices(6).contains(x):
             block = 6
-        case 55...57, 64...66, 73...75:
+        case let x where blockIndices(7).contains(x):
             block = 7
-        case 58...60, 67...69, 76...78:
-            block = 8
-        case 61...63, 70...72, 79...81:
-            block = 9
+        case let x where blockIndices(8).contains(x):
+            block = 4
         default:
-            block = 0;
+            block = -1;
             print("Error: Invalid block assignment")
         }
     }

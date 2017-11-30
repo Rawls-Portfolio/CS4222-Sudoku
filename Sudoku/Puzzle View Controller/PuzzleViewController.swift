@@ -137,9 +137,16 @@ class PuzzleViewController: UIViewController {
     }
     
     func reloadCells(from position: Position){
-        let indexPaths = [IndexPath]()
-        //TODO: how to obtain index path for item based on position? or save indexpath in Cell?
-        puzzleCollectionView.reloadItems(at: indexPaths)
+        var indices = [Int]()
+        
+        indices += position.rowIndices(position.row)
+        indices += position.colIndices(position.col)
+        indices += position.blockIndices(position.block)
+
+        // filter out duplicates
+        let paths = Array(Set(indices)).map{IndexPath(item: $0, section: 0)}
+        
+        puzzleCollectionView.reloadItems(at: paths)
     }
 }
 
@@ -153,7 +160,7 @@ extension PuzzleViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PuzzleCell", for: indexPath) as? PuzzleViewCell else {
             return PuzzleViewCell()
         }
-        
+     
         cell.decorate(with: model.getCell(for: indexPath.row))
         return cell
     }
@@ -183,6 +190,7 @@ extension PuzzleViewController: MenuViewDelegate {
     }
     
     func highlightActive(){
+        let indices = model.getActiveIndices()
         // TODO: update all cells with active value displayed
         // puzzleCollectionView.reloadItems(at: [IndexPath])
     }

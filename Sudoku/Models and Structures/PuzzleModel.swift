@@ -71,6 +71,12 @@ class PuzzleModel {
         }
     }
     
+    // damn I love high order functions❣️
+    func getActiveIndices(for value: Value) -> [Int] {
+        return puzzle.filter{$0.solution == value}.map{$0.position.toIndex}
+        
+    }
+    
     func clearSolution(of value: Value, for cell: Int, transition: ()->() ){
         puzzle[cell].solution = nil
         transition()
@@ -94,6 +100,6 @@ class PuzzleModel {
     
     func validateSolution(of: Value, for cell: Int, completion: (Bool) -> ()) {
         // TODO: validate
-        // completion(true)
+        completion(true)
     }
 }
