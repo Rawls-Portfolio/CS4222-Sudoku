@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2609D25A1FCF40E900337CB8 /* NumberSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2609D2591FCF40E900337CB8 /* NumberSelectionView.swift */; };
+		2609D25A1FCF40E900337CB8 /* NumberSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2609D2591FCF40E900337CB8 /* NumberSelectionViewController.swift */; };
 		264A63FF1FCDF885000A9867 /* SudokuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264A63FE1FCDF885000A9867 /* SudokuLayout.swift */; };
 		267F23DC1FCD1B9E0069282B /* PuzzleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267F23DB1FCD1B9E0069282B /* PuzzleModel.swift */; };
 		267F23DE1FCD1C540069282B /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267F23DD1FCD1C540069282B /* DataTypes.swift */; };
@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2609D2591FCF40E900337CB8 /* NumberSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectionView.swift; sourceTree = "<group>"; };
+		2609D2591FCF40E900337CB8 /* NumberSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectionViewController.swift; sourceTree = "<group>"; };
 		2639B1051FCD566000F3C6D7 /* callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = callback.h; sourceTree = "<group>"; };
 		264A63FE1FCDF885000A9867 /* SudokuLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuLayout.swift; sourceTree = "<group>"; };
 		267F23DB1FCD1B9E0069282B /* PuzzleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleModel.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				269D87201FCF2699004E474C /* MenuView.swift */,
-				2609D2591FCF40E900337CB8 /* NumberSelectionView.swift */,
+				2609D2591FCF40E900337CB8 /* NumberSelectionViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			files = (
 				267F23DC1FCD1B9E0069282B /* PuzzleModel.swift in Sources */,
 				267F23E21FCD22940069282B /* NotesView.swift in Sources */,
-				2609D25A1FCF40E900337CB8 /* NumberSelectionView.swift in Sources */,
+				2609D25A1FCF40E900337CB8 /* NumberSelectionViewController.swift in Sources */,
 				26A6AF2A1FC7E888001827BA /* PuzzleViewController.swift in Sources */,
 				267F23E51FCD22C50069282B /* SolutionView.swift in Sources */,
 				26A6AF301FC7E888001827BA /* Sudoku.xcdatamodeld in Sources */,

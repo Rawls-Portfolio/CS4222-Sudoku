@@ -8,7 +8,15 @@
 
 import UIKit
 
+
+protocol MenuViewDelegate: class {
+    func displayNumberSelection()
+    func setActive(value: Value)
+}
 class MenuView: UIView {
+    // MARK: - Properties
+    weak var delegate: MenuViewDelegate?
+    
     // MARK: - IBOutlets
     @IBOutlet weak var modeButton: UIButton!
     @IBOutlet weak var numberButton: UIButton!
@@ -49,5 +57,7 @@ class MenuView: UIView {
             return
         }
         print(#function)
+        
+        delegate?.displayNumberSelection()
     }
 }

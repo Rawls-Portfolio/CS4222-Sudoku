@@ -16,13 +16,26 @@ class PuzzleViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var puzzleCollectionView: UICollectionView!
     @IBOutlet weak var menu: MenuView!
+    @IBOutlet weak var numberSelectionPlaceholder: UIView!
     
     //MARK: - View Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         model = PuzzleModel(targetScore: 170)
+        
         preparePuzzleCollectionView()
+        
+        menu.delegate = self
         menu.prepareButtons()
+    
+        numberSelectionPlaceholder.isHidden = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super .prepare(for: segue, sender: sender)
+        if let numberSelection = segue.destination as? NumberSelectionViewController {
+            numberSelection.delegate = self
+        }
     }
     
     func preparePuzzleCollectionView() {
@@ -101,4 +114,17 @@ extension PuzzleViewController: UICollectionViewDataSource {
         cell.decorate(with: model.getCell(for: indexPath.row))
         return cell
     }
+}
+
+extension PuzzleViewController: MenuViewDelegate {
+    func setActive(value: Value) {
+        print(#function)
+        numberSelectionPlaceholder.isHidden = true
+    }
+    
+    func displayNumberSelection() {
+        print(#function)
+        numberSelectionPlaceholder.isHidden = false
+    }
+
 }
