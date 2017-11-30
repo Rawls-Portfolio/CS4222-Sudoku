@@ -31,7 +31,6 @@ class NumberSelectionViewController: UIViewController {
         }
     }
     
-    // TODO: set active value
     @objc func labelTapped(gesture: UIGestureRecognizer){
         guard let label = gesture.view as? UILabel, let value = Value(rawValue: label.text!) else {
             print("label identification failed")

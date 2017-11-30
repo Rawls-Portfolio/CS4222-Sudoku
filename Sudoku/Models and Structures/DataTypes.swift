@@ -8,17 +8,43 @@
 
 import Foundation
 
+enum Mode {
+    case notes, solution
+    
+    var toggle: Mode {
+        switch(self){
+        case .notes: return .solution
+        case .solution: return .notes
+        }
+    }
+}
+
+enum State {
+    case normal, permanent, solution, conflict
+}
+
 struct Cell {
     let position: Position
-    let notes: [Value?]
-    let solution: Value?
-    let mode: Mode
+    var notes: [Value]
+    var solution: Value?
+    var state: State
+    
+    init(position: Position, solution: Value?){
+        self.position = position
+        self.notes = [Value]()
+        self.solution = solution
+        self.state = solution == nil ? .normal : .permanent
+    }
 }
 
 struct Position {
     let row: Int
     let col: Int
     let block: Int
+    
+    var toIndex: Int {
+        return (row * 9) + col
+    }
     
     var description: String {
         return "Row: \(row + 1), Col: \(col + 1), Block: \(block)"
@@ -53,10 +79,6 @@ struct Position {
     }
 }
 
-enum Mode {
-    case editable, permanent
-}
-
 enum Value: String{
     case one = "1"
     case two = "2"
@@ -87,11 +109,4 @@ enum Value: String{
         default: return nil
         }
     }
-//    static func notes()-> [Value] {
-//        var notes = [Value]()
-//        for value in 1...9 {
-//            notes.append(Value.of(value)!)
-//        }
-//        return notes
-//    }
 }

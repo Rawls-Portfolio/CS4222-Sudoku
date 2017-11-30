@@ -4,7 +4,6 @@
 //
 //  Created by Amanda Rawls on 11/23/17.
 //  Copyright © 2017 Amanda Rawls. All rights reserved.
-//  assist from https://medium.com/@adinugroho/fixed-height-uicollectionview-inside-uitableview-79f24657d08f
 
 import UIKit
 
@@ -38,47 +37,64 @@ class PuzzleViewController: UIViewController {
         }
     }
     
+    func highlight(for position: Position){
+        // TODO: change view only, not the model
+        reloadCells(from: position)
+    }
+
+    func transition(to mode: Mode){
+        // TODO: from view to view
+    }
+    
+    // MARK: - Gesture Recognition Functions
     func preparePuzzleCollectionView() {
         puzzleCollectionView.dataSource = self
         let sideLength = view.frame.size.width - 20
         let frame = CGRect(x: 10, y: 40.0 , width: sideLength , height: sideLength)
         puzzleCollectionView.frame = frame
         
-        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellSingleTapped))
-        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellDoubleTapped))
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(cellLongPressed))
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(cellPressed))
         singleTapGesture.require(toFail: doubleTapGesture)
         singleTapGesture.numberOfTapsRequired = 1
         doubleTapGesture.numberOfTapsRequired = 2
         puzzleCollectionView.addGestureRecognizer(singleTapGesture)
         puzzleCollectionView.addGestureRecognizer(doubleTapGesture)
         puzzleCollectionView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func cellTapped(gesture: UITapGestureRecognizer){
+        let point = gesture.location(in: puzzleCollectionView)
+        guard let position = getCellPosition(atPoint: point) else {
+            print("\(#function) failed")
+            return
+        }
         
-    }
-    
-    // MARK: - Gesture Recognition Functions
-    // TODO: Selecting a cell will highlight its column, row, and group.
-    // TODO: and add the currently selected number (from menu bar) to the cell (to which view is also determined by the menu bar)
-    @objc func cellSingleTapped(gesture: UITapGestureRecognizer){
-        guard let position = getCellPosition(atPoint: gesture.location(in: puzzleCollectionView)) else {
-            print("\(#function) failed")
-            return
+        var solution: Value?
+        switch(gesture.numberOfTapsRequired){
+        case 1:
+            solution = model.active
+            highlight(for: position)
+        case 2:
+            solution = model.getNoteValue(for: position.toIndex)
+        
+        default: print("unknown gesture")
         }
-        print("\(#function) for \(position.description)")
-    }
-    
-    // TODO: double tapping on a cell when the note layer shows only one value will populate the cell's solution with that noted value
-    @objc func cellDoubleTapped(gesture: UITapGestureRecognizer) {
-        guard let position = getCellPosition(atPoint: gesture.location(in: puzzleCollectionView)) else {
-            print("\(#function) failed")
-            return
+        
+        if let value = solution {
+            model.setSolution(of: value, for: position.toIndex) { (success) in
+                if success {
+                    transition(to: .solution)
+                }
+            }
         }
-        print("\(#function) for \(position.description)")
+        reloadCells(from: position)
     }
+
     
     // TODO: long press on a selected cell will display an animated pop-up menu.
-    
-     @objc func cellLongPressed(gesture: UITapGestureRecognizer) {
+     @objc func cellPressed(gesture: UITapGestureRecognizer) {
         if gesture.state != .ended {
             return
         }
@@ -86,7 +102,21 @@ class PuzzleViewController: UIViewController {
             print("\(#function) failed")
             return
         }
-        print("\(#function) for \(position.description)")
+        
+        /* TODO:
+         execute one of these functions in a completion closure
+         func clearSelected() {
+         
+         }
+         
+         func setPermanentState() {
+            // if solution is set
+         }
+         
+         func selectedHint() {
+         
+         }
+         */
     }
     
     func getCellPosition(atPoint point: CGPoint) -> Position? {
@@ -97,6 +127,19 @@ class PuzzleViewController: UIViewController {
                 return nil
         }
         return position
+    }
+    
+    func reloadCell(atPoint point: CGPoint){
+        guard let selectedIndexPath: IndexPath = puzzleCollectionView.indexPathForItem(at: point) else {
+            return
+        }
+        puzzleCollectionView.reloadItems(at: [selectedIndexPath])
+    }
+    
+    func reloadCells(from position: Position){
+        let indexPaths = [IndexPath]()
+        //TODO: how to obtain index path for item based on position? or save indexpath in Cell?
+        puzzleCollectionView.reloadItems(at: indexPaths)
     }
 }
 
@@ -116,15 +159,31 @@ extension PuzzleViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - Menu View Delegate Methods
 extension PuzzleViewController: MenuViewDelegate {
+    
+    func displayNewGameMenu() {
+        // TODO: new game (pop up with level selection/restart)
+    }
+    
+    func toggleMode() {
+        model.toggleMode()
+    }
+    
     func setActive(value: Value) {
         print(#function)
         numberSelectionPlaceholder.isHidden = true
+        model.active = value
+        // TODO: display active
     }
     
     func displayNumberSelection() {
         print(#function)
         numberSelectionPlaceholder.isHidden = false
     }
-
+    
+    func highlightActive(){
+        // TODO: update all cells with active value displayed
+        // puzzleCollectionView.reloadItems(at: [IndexPath])
+    }
 }

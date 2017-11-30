@@ -8,11 +8,15 @@
 
 import UIKit
 
-
 protocol MenuViewDelegate: class {
     func displayNumberSelection()
+    func displayNewGameMenu()
     func setActive(value: Value)
+    func highlight(for: Position)
+    func highlightActive()
+    func toggleMode()
 }
+
 class MenuView: UIView {
     // MARK: - Properties
     weak var delegate: MenuViewDelegate?
@@ -33,30 +37,25 @@ class MenuView: UIView {
         numberButton.addGestureRecognizer(doubleTapGesture)
         numberButton.addGestureRecognizer(longPressGesture)
     }
+    
     // MARK: - IBActions
-    // TODO: toggle solution or notes view currently active for user input
     @IBAction func modeButtonPressed(_ sender: UIButton) {
-        print(#function)
+        delegate?.toggleMode()
     }
     
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
-        print(#function)
+        delegate?.displayNewGameMenu()
     }
     
     // MARK: - Number Button Gesture Recognition Methods
-    // TODO: menu item will display currently selected number.
-    // TODO: When tapped, all cells containing this value as solution will be highlighted.
     @objc func highlightNumbers(gesture: UIGestureRecognizer){
-        print(#function)
+        delegate?.highlightActive()
     }
-    // TODO: A long press or double tap will display a pop up menu allowing the user to select a different number
-    // new game (pop up with level selection/restart)
 
     @objc func showNumberSelection(gesture: UIGestureRecognizer){
         if gesture.state != .ended {
             return
         }
-        print(#function)
         
         delegate?.displayNumberSelection()
     }

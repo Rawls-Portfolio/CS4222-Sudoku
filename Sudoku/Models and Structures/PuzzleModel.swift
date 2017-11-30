@@ -14,6 +14,16 @@ class PuzzleModel {
     private var puzzle = [Cell]()
     private let difficulty: Int
     private var undoHistory = [Cell]()
+    private var mode: Mode
+    private var _active: Value
+    var active: Value {
+        get {
+            return _active
+        }
+        set {
+            _active = newValue
+        }
+    }
     
     let getSwiftyRandom: swiftFuncPtr = { 
         return Int32(arc4random_uniform(UInt32(Int32.max)))
@@ -21,6 +31,8 @@ class PuzzleModel {
     
     // MARK: - Methods
     init(targetScore: Int32) {
+        mode = .solution
+        _active = .one
         // obtain valid solution
         let data: UnsafeMutablePointer<UInt8> = generateSolution(getSwiftyRandom)
         let generatedSolution = Array(UnsafeBufferPointer(start: data, count: 81))
@@ -35,16 +47,53 @@ class PuzzleModel {
        
         generatedPuzzle.map{Int($0)}.forEach{(value) in
             let cellValue = Value.of(value)
-            let mode: Mode = cellValue == nil ? .editable : .permanent
             let position = Position(arrayIndex: puzzle.count)
-            let newCell = Cell(position: position, notes: [Value](), solution: cellValue, mode: mode)
+            let newCell = Cell(position: position, solution: cellValue)
             puzzle.append(newCell)
         }
         
         free(data) //dynamically allocated in the generator
     }
     
+    func toggleMode(){
+        mode = mode.toggle
+    }
+    
     func getCell(for cell: Int)-> Cell {
         return puzzle[cell]
+    }
+    
+    func getNoteValue(for cell: Int) -> Value? {
+        if puzzle[cell].notes.count == 1 {
+            return puzzle[cell].notes.first!
+        } else {
+            return nil
+        }
+    }
+    
+    func clearSolution(of value: Value, for cell: Int, transition: ()->() ){
+        puzzle[cell].solution = nil
+        transition()
+    }
+    
+    func clearNotes(for cell: Int){
+        puzzle[cell].notes.removeAll()
+    }
+    
+    func setSolution(of value: Value, for cell: Int, transition: (Bool) -> ()) {
+        validateSolution(of: value, for: cell) { (success) in
+            if success {
+                puzzle[cell].solution = value
+                transition(true)
+            } else {
+                puzzle[cell].state = .conflict
+                // TODO: locate other cells in conflict and mark them
+            }
+        }
+    }
+    
+    func validateSolution(of: Value, for cell: Int, completion: (Bool) -> ()) {
+        // TODO: validate
+        // completion(true)
     }
 }
