@@ -11,6 +11,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Noteworthy.ttc">
+            <string>Noteworthy-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Puzzle View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -36,105 +41,92 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5so-ik-4ct" customClass="NotesView" customModule="Sudoku" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="one" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL5-Mb-XRc" userLabel="1" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="16.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="two" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABV-NJ-aUE" userLabel="2" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
-                                                            <rect key="frame" x="17" y="0.0" width="16.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="three" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPS-xd-sZF" userLabel="3" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
-                                                            <rect key="frame" x="33.5" y="0.0" width="16.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="four" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-d9-Uny" userLabel="4" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="17" width="16.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="five" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyV-ah-N9l" userLabel="5" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
-                                                            <rect key="frame" x="17" y="17" width="16.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="six" text="6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2R-yq-kPz" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
-                                                            <rect key="frame" x="33.5" y="17" width="16.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="seven" text="7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFL-AZ-LmB" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="33.5" width="16.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eight" text="8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9k-u6-O3K" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
-                                                            <rect key="frame" x="17" y="33.5" width="16.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nine" text="9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37u-v5-J7S" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
-                                                            <rect key="frame" x="33.5" y="33.5" width="16.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4xG-0H-jfc">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DTY-sY-kSq">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="16.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="one" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL5-Mb-XRc" userLabel="1" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="16.5" height="16.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="two" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABV-NJ-aUE" userLabel="2" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
+                                                                            <rect key="frame" x="16.5" y="0.0" width="17" height="16.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="three" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPS-xd-sZF" userLabel="3" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
+                                                                            <rect key="frame" x="33.5" y="0.0" width="16.5" height="16.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fh9-6y-s5g">
+                                                                    <rect key="frame" x="0.0" y="16.5" width="50" height="17"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="four" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-d9-Uny" userLabel="4" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="16.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="five" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyV-ah-N9l" userLabel="5" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
+                                                                            <rect key="frame" x="16.5" y="0.0" width="17" height="17"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="six" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2R-yq-kPz" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
+                                                                            <rect key="frame" x="33.5" y="0.0" width="16.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eKe-vr-7W7">
+                                                                    <rect key="frame" x="0.0" y="33.5" width="50" height="16.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="seven" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFL-AZ-LmB" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="16.5" height="16.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eight" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9k-u6-O3K" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
+                                                                            <rect key="frame" x="16.5" y="0.0" width="17" height="16.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nine" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37u-v5-J7S" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
+                                                                            <rect key="frame" x="33.5" y="0.0" width="16.5" height="16.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="DTY-sY-kSq" firstAttribute="width" secondItem="4xG-0H-jfc" secondAttribute="width" id="2Re-M3-wOG"/>
+                                                                <constraint firstItem="fh9-6y-s5g" firstAttribute="width" secondItem="4xG-0H-jfc" secondAttribute="width" id="CM5-vt-cMb"/>
+                                                                <constraint firstItem="eKe-vr-7W7" firstAttribute="width" secondItem="4xG-0H-jfc" secondAttribute="width" id="jzd-KQ-ihd"/>
+                                                            </constraints>
+                                                        </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="ABV-NJ-aUE" firstAttribute="centerX" secondItem="5so-ik-4ct" secondAttribute="centerX" id="1sX-ty-FU4"/>
-                                                        <constraint firstAttribute="trailing" secondItem="rPS-xd-sZF" secondAttribute="trailing" id="4CS-Jg-stv"/>
-                                                        <constraint firstItem="HFL-AZ-LmB" firstAttribute="leading" secondItem="5so-ik-4ct" secondAttribute="leading" id="55T-dD-1xD"/>
-                                                        <constraint firstItem="2kQ-d9-Uny" firstAttribute="centerY" secondItem="5so-ik-4ct" secondAttribute="centerY" id="AAW-QQ-AqN"/>
-                                                        <constraint firstItem="qL5-Mb-XRc" firstAttribute="leading" secondItem="5so-ik-4ct" secondAttribute="leading" id="BgD-xo-szw"/>
-                                                        <constraint firstItem="2kQ-d9-Uny" firstAttribute="height" secondItem="qL5-Mb-XRc" secondAttribute="height" id="CJg-lg-jy8"/>
-                                                        <constraint firstAttribute="bottom" secondItem="37u-v5-J7S" secondAttribute="bottom" id="EZt-6N-EI2"/>
-                                                        <constraint firstItem="qyV-ah-N9l" firstAttribute="centerX" secondItem="5so-ik-4ct" secondAttribute="centerX" id="FNa-fX-1dK"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qL5-Mb-XRc" secondAttribute="trailing" constant="20" symbolic="YES" id="NUT-CN-MGW"/>
-                                                        <constraint firstItem="qyV-ah-N9l" firstAttribute="width" secondItem="qL5-Mb-XRc" secondAttribute="width" id="Njk-fp-utb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="37u-v5-J7S" secondAttribute="trailing" id="OEE-H6-hUf"/>
-                                                        <constraint firstItem="37u-v5-J7S" firstAttribute="height" secondItem="qL5-Mb-XRc" secondAttribute="height" id="Onl-sE-PlR"/>
-                                                        <constraint firstItem="ABV-NJ-aUE" firstAttribute="width" secondItem="qL5-Mb-XRc" secondAttribute="width" id="PPF-yh-EzT"/>
-                                                        <constraint firstItem="rPS-xd-sZF" firstAttribute="height" secondItem="qL5-Mb-XRc" secondAttribute="height" id="Ph2-bC-W2o"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HFL-AZ-LmB" secondAttribute="trailing" constant="20" symbolic="YES" id="QIe-qo-rJx"/>
-                                                        <constraint firstItem="37u-v5-J7S" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5so-ik-4ct" secondAttribute="leading" constant="20" symbolic="YES" id="R04-da-gKT"/>
-                                                        <constraint firstItem="rPS-xd-sZF" firstAttribute="width" secondItem="qL5-Mb-XRc" secondAttribute="width" id="RbJ-Vr-0zL"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Z9k-u6-O3K" secondAttribute="bottom" id="UQt-Dv-uQW"/>
-                                                        <constraint firstItem="qyV-ah-N9l" firstAttribute="centerY" secondItem="5so-ik-4ct" secondAttribute="centerY" id="Ufx-fp-faG"/>
-                                                        <constraint firstItem="Z9k-u6-O3K" firstAttribute="width" secondItem="qL5-Mb-XRc" secondAttribute="width" id="Xj6-sD-zbQ"/>
-                                                        <constraint firstItem="qL5-Mb-XRc" firstAttribute="height" secondItem="5so-ik-4ct" secondAttribute="height" multiplier="0.33" id="Ylw-x5-ZjL"/>
-                                                        <constraint firstItem="rPS-xd-sZF" firstAttribute="top" secondItem="5so-ik-4ct" secondAttribute="top" id="Zei-9z-ZOH"/>
-                                                        <constraint firstItem="Z9k-u6-O3K" firstAttribute="centerX" secondItem="5so-ik-4ct" secondAttribute="centerX" id="dEr-7y-ryi"/>
-                                                        <constraint firstItem="n2R-yq-kPz" firstAttribute="width" secondItem="qL5-Mb-XRc" secondAttribute="width" id="dcr-Cr-RJ4"/>
-                                                        <constraint firstItem="n2R-yq-kPz" firstAttribute="centerY" secondItem="5so-ik-4ct" secondAttribute="centerY" id="gC9-Nl-ypV"/>
-                                                        <constraint firstItem="HFL-AZ-LmB" firstAttribute="height" secondItem="qL5-Mb-XRc" secondAttribute="height" id="gO7-De-Fg6"/>
-                                                        <constraint firstItem="rPS-xd-sZF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5so-ik-4ct" secondAttribute="leading" constant="20" symbolic="YES" id="gSa-qk-pOn"/>
-                                                        <constraint firstItem="HFL-AZ-LmB" firstAttribute="width" secondItem="qL5-Mb-XRc" secondAttribute="width" id="h9d-zX-cCU"/>
-                                                        <constraint firstItem="2kQ-d9-Uny" firstAttribute="width" secondItem="qL5-Mb-XRc" secondAttribute="width" id="hJT-3r-S3o"/>
-                                                        <constraint firstItem="qL5-Mb-XRc" firstAttribute="top" secondItem="5so-ik-4ct" secondAttribute="top" id="hm9-10-1HD"/>
-                                                        <constraint firstItem="n2R-yq-kPz" firstAttribute="height" secondItem="qL5-Mb-XRc" secondAttribute="height" id="k8P-bM-uaB"/>
-                                                        <constraint firstItem="qyV-ah-N9l" firstAttribute="height" secondItem="qL5-Mb-XRc" secondAttribute="height" id="nFD-P3-VCj"/>
-                                                        <constraint firstItem="Z9k-u6-O3K" firstAttribute="height" secondItem="qL5-Mb-XRc" secondAttribute="height" id="pDM-aG-Bm0"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2kQ-d9-Uny" secondAttribute="trailing" constant="20" symbolic="YES" id="rV4-d8-1h4"/>
-                                                        <constraint firstItem="ABV-NJ-aUE" firstAttribute="height" secondItem="qL5-Mb-XRc" secondAttribute="height" id="rbV-tz-ta2"/>
-                                                        <constraint firstItem="qL5-Mb-XRc" firstAttribute="width" secondItem="5so-ik-4ct" secondAttribute="width" multiplier="0.33" id="rlW-Ho-Ipn"/>
-                                                        <constraint firstAttribute="trailing" secondItem="n2R-yq-kPz" secondAttribute="trailing" id="sdj-GT-cRC"/>
-                                                        <constraint firstItem="2kQ-d9-Uny" firstAttribute="leading" secondItem="5so-ik-4ct" secondAttribute="leading" id="tBK-rt-ZGo"/>
-                                                        <constraint firstAttribute="bottom" secondItem="HFL-AZ-LmB" secondAttribute="bottom" id="tPS-kx-AYr"/>
-                                                        <constraint firstItem="37u-v5-J7S" firstAttribute="width" secondItem="qL5-Mb-XRc" secondAttribute="width" id="vxv-lV-t4H"/>
-                                                        <constraint firstItem="n2R-yq-kPz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5so-ik-4ct" secondAttribute="leading" constant="20" symbolic="YES" id="xWb-c7-DQy"/>
-                                                        <constraint firstItem="ABV-NJ-aUE" firstAttribute="top" secondItem="5so-ik-4ct" secondAttribute="top" id="yQE-MR-MD4"/>
+                                                        <constraint firstItem="4xG-0H-jfc" firstAttribute="leading" secondItem="5so-ik-4ct" secondAttribute="leading" id="2Gt-at-dxc"/>
+                                                        <constraint firstItem="4xG-0H-jfc" firstAttribute="top" secondItem="5so-ik-4ct" secondAttribute="top" id="MqC-YV-GBX"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4xG-0H-jfc" secondAttribute="trailing" id="OhP-yn-BTT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4xG-0H-jfc" secondAttribute="bottom" id="Xvg-hy-sYR"/>
                                                     </constraints>
                                                     <connections>
                                                         <outletCollection property="labels" destination="qL5-Mb-XRc" collectionClass="NSMutableArray" id="fdX-76-pny"/>
@@ -152,7 +144,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7g-Bu-vNf" userLabel="V">
-                                                            <rect key="frame" x="19.5" y="14" width="11.5" height="21"/>
+                                                            <rect key="frame" x="19.5" y="14.5" width="11.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -272,22 +264,44 @@
                                     <constraint firstAttribute="width" secondItem="m43-L0-GWo" secondAttribute="height" multiplier="1:1" id="LwK-6U-K9x"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cpx-pa-WbY">
+                                <rect key="frame" x="138" y="535" width="99" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Start Game"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watermelon Sudoku" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xg-4F-zre">
+                                <rect key="frame" x="83.5" y="607" width="208" height="40"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seeds" translatesAutoresizingMaskIntoConstraints="NO" id="2pQ-aH-bYv">
+                                <rect key="frame" x="140" y="552" width="95" height="95"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Cpx-pa-WbY" firstAttribute="centerX" secondItem="cwN-H3-jKc" secondAttribute="centerX" id="BJW-7E-v06"/>
                             <constraint firstItem="m43-L0-GWo" firstAttribute="leading" secondItem="QvZ-lV-i68" secondAttribute="leading" constant="15" id="CX5-e3-jpK"/>
                             <constraint firstItem="m43-L0-GWo" firstAttribute="top" secondItem="QvZ-lV-i68" secondAttribute="top" constant="15" id="DYj-pi-cj0"/>
+                            <constraint firstItem="5xg-4F-zre" firstAttribute="centerX" secondItem="cwN-H3-jKc" secondAttribute="centerX" id="ESO-5y-yZa"/>
+                            <constraint firstItem="5xg-4F-zre" firstAttribute="top" secondItem="Cpx-pa-WbY" secondAttribute="bottom" constant="36" id="GDQ-n4-mbD"/>
+                            <constraint firstItem="QvZ-lV-i68" firstAttribute="bottom" secondItem="2pQ-aH-bYv" secondAttribute="bottom" constant="20" id="KOv-iU-cEh"/>
+                            <constraint firstItem="2pQ-aH-bYv" firstAttribute="centerX" secondItem="cwN-H3-jKc" secondAttribute="centerX" id="QtK-bi-UPB"/>
                             <constraint firstItem="QvZ-lV-i68" firstAttribute="trailing" secondItem="m43-L0-GWo" secondAttribute="trailing" constant="15" id="UmE-em-VIs"/>
+                            <constraint firstItem="QvZ-lV-i68" firstAttribute="bottom" secondItem="5xg-4F-zre" secondAttribute="bottom" constant="20" id="b66-KF-BTO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QvZ-lV-i68"/>
                     </view>
                     <connections>
                         <outlet property="replicatorView" destination="m43-L0-GWo" id="tM3-cR-n61"/>
+                        <outlet property="titleImage" destination="2pQ-aH-bYv" id="nbl-2s-vQi"/>
+                        <outlet property="titleLabel" destination="5xg-4F-zre" id="Q2Y-JR-cLu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uJ2-KD-1e9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1220" y="34"/>
+            <point key="canvasLocation" x="1220" y="33.733133433283363"/>
         </scene>
         <!--Number Selection View Controller-->
         <scene sceneID="1YB-ie-WGP">
@@ -398,4 +412,7 @@
             <point key="canvasLocation" x="52" y="570"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Seeds" width="95" height="95"/>
+    </resources>
 </document>

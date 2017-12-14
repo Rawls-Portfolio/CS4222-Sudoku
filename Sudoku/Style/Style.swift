@@ -9,9 +9,9 @@
 import UIKit
 class Style {
     static var notesTextColor = UIColor(red: 57/255, green: 79/255, blue: 22/255, alpha: 1.0) // forest green
-    static var normalBGColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
+    static var normalBGColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0) // grey
     static var permanentTextColor =  UIColor(red: 57/255, green: 43/255, blue: 32/255, alpha: 1.0) // brown
-    static var solutionTextColor = UIColor(red: 211/255, green: 92/255, blue: 12/255, alpha: 1.0) // orange
+    static var solutionTextColor = UIColor(red: 222/255, green: 103/255, blue: 93/255, alpha: 1.0) // watermelon
     static var conflictBGColor = UIColor(red: 219/255, green: 145/255, blue: 154/255, alpha: 1.0) // pink
     static var highlightBGColor = UIColor(red: 198/255, green: 207/255, blue: 167/255, alpha: 1.0) // mint
     static var background = UIColor(red: 182/255, green: 175/255, blue: 164/255, alpha: 1.0) // beige
@@ -55,8 +55,4 @@ extension PuzzleViewController: UICollectionViewDelegate {
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
     }
-    
-    //  func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-    //
-    //    }
 }

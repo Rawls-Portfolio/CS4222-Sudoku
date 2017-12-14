@@ -35,6 +35,28 @@ enum Mode {
     }
 }
 
+enum Difficulty {
+    case easy, medium, hard, expert
+    
+    var description: String {
+        switch(self){
+        case .easy: return "Easy"
+        case .medium: return "Medium"
+        case .hard: return "Hard"
+        case .expert: return "Expert"
+        }
+    }
+    
+    var targetScore: Int32 {
+        switch(self){
+        case .easy: return 50
+        case .medium: return 200
+        case .hard: return 500
+        case .expert: return 1000
+        }
+    }
+}
+
 enum State {
     case neutral, permanent, solution
 }

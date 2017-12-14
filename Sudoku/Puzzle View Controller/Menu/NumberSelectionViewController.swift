@@ -18,11 +18,12 @@ class NumberSelectionViewController: UIViewController {
     // MARK: - View Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.borderColor = UIColor.gray.cgColor
+        view.layer.backgroundColor = Style.normalBGColor.cgColor
+        view.layer.borderColor = Style.conflictBGColor.cgColor
         view.layer.borderWidth = 2
         view.layer.cornerRadius = 10.0
         
-        view.layer.shadowColor = UIColor.gray.cgColor
+        view.layer.shadowColor = Style.highlightBGColor.cgColor
         view.layer.shadowRadius = 10.0
         view.layer.shadowOpacity = 0.8
         view.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
