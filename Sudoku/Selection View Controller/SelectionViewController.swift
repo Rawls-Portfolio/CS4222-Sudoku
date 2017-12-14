@@ -30,14 +30,14 @@ class SelectionViewController: StyleViewController {
     
     // MARK: - Methods
     @IBAction func startGamePressed(_ sender: UIButton) {
-        //        print("target difficulty: \(selection.targetScore)")
-        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //        guard let puzzleView = storyboard.instantiateViewController(withIdentifier: "Puzzle") as? PuzzleViewController else { return }
-        //        puzzleView.model = PuzzleModel(targetScore: selection.targetScore)
-        //        puzzleView.willMove(toParentViewController: self)
-        //        addChildViewController(puzzleView)
-        //        view.addSubview(puzzleView.view)
-        //        puzzleView.didMove(toParentViewController: self)
+        print("target difficulty: \(selection.targetScore)")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let puzzleView = storyboard.instantiateViewController(withIdentifier: "Game") as? PuzzleViewController else { return }
+        puzzleView.model = PuzzleModel(targetScore: selection.targetScore)
+        puzzleView.willMove(toParentViewController: self)
+        addChildViewController(puzzleView)
+        view.addSubview(puzzleView.view)
+        puzzleView.didMove(toParentViewController: self)
     }
 
     func setTitle() {

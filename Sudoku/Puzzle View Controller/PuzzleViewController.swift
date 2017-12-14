@@ -20,7 +20,7 @@ class PuzzleViewController: StyleViewController {
     //MARK: - View Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        model = PuzzleModel(targetScore: 170)
+        // model = PuzzleModel(targetScore: 170)
         
         preparePuzzleCollectionView()
         
