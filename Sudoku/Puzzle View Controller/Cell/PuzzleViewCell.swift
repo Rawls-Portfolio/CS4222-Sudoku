@@ -19,16 +19,6 @@ class PuzzleViewCell: UICollectionViewCell {
     @IBOutlet weak var notes: NotesView!
     @IBOutlet weak var solution: SolutionView!
     
-    // MARK: - Init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
     // MARK: - Methods
     func decorate(with cell: Cell){
         self._position = cell.position
