@@ -12,7 +12,7 @@ protocol MenuViewDelegate: class {
     func displayNumberSelection()
     func displayNewGameMenu()
     func setActive(value: Value)
-    func highlight(for: Position)
+    func highlightPosition(_ position: Position)
     func highlightActive()
     func toggleMode()
 }
@@ -36,6 +36,11 @@ class MenuView: UIView {
         numberButton.addGestureRecognizer(singleTapGesture)
         numberButton.addGestureRecognizer(doubleTapGesture)
         numberButton.addGestureRecognizer(longPressGesture)
+        
+        modeButton.setTitle("", for: .normal)
+        numberButton.setTitle("", for: .normal)
+        newGameButton.setTitle("", for: .normal)
+        newGameButton.setImage(#imageLiteral(resourceName: "NewGame"), for: .normal)
     }
     
     // MARK: - IBActions

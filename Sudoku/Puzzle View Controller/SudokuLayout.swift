@@ -5,9 +5,17 @@
 //  Created by Amanda Rawls on 11/28/17.
 //  Copyright © 2017 Amanda Rawls. All rights reserved.
 //  layout assist: https://www.raywenderlich.com/164608/uicollectionview-custom-layout-tutorial-pinterest-2
-//  decoration view assist (matt's answer): https://stackoverflow.com/questions/12810628/uicollectionview-decoration-view
-
+//  decoration view assist: http://martiancraft.com/blog/2017/05/collection-view-layouts/
 import UIKit
+
+class Decoration: UICollectionReusableView {
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        self.backgroundColor = Style.permanentTextColor
+        self.layer.borderColor = Style.permanentTextColor.cgColor
+        self.layer.borderWidth = 2
+    }
+}
 
 class SudokuLayout: UICollectionViewLayout {
     private var numberOfColumns = 9

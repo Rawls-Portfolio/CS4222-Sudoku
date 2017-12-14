@@ -14,15 +14,20 @@ class PuzzleModel {
     private var puzzle = [Cell]()
     private let difficulty: Int
     private var undoHistory = [Cell]()
-    private var mode: Mode
+    private var _mode: Mode
     private var _active: Value
+    private var _lastHighlights = [Int]()
+    private var _lastConflict = [Int]()
+    var needsUpdate = [Int]()
+    
     var active: Value {
-        get {
-            return _active
-        }
-        set {
-            _active = newValue
-        }
+        get { return _active }
+        set { _active = newValue }
+    }
+    
+    var mode: Mode {
+        get { return _mode }
+        set { _mode = newValue }
     }
     
     let getSwiftyRandom: swiftFuncPtr = { 
@@ -31,7 +36,7 @@ class PuzzleModel {
     
     // MARK: - Methods
     init(targetScore: Int32) {
-        mode = .solution
+        _mode = .solution
         _active = .one
         // obtain valid solution
         let data: UnsafeMutablePointer<UInt8> = generateSolution(getSwiftyRandom)
@@ -72,34 +77,73 @@ class PuzzleModel {
     }
     
     // damn I love high order functions❣️
-    func getActiveIndices(for value: Value) -> [Int] {
-        return puzzle.filter{$0.solution == value}.map{$0.position.toIndex}
+    func getActiveIndices() -> [Int] {
+        return puzzle.filter{$0.solution == _active}.map{$0.position.toIndex}
         
     }
     
-    func clearSolution(of value: Value, for cell: Int, transition: ()->() ){
+    func applyHighlights(to cells: [Int]){
+        cells.forEach{(cell) in puzzle[cell].highlight = true }
+        needsUpdate += cells
+        _lastHighlights = cells
+    }
+    
+    func removeEffects(){
+        _lastHighlights.forEach{(cell) in puzzle[cell].highlight = false }
+        needsUpdate += _lastHighlights
+        _lastHighlights.removeAll()
+ 
+        _lastConflict.forEach{(cell) in puzzle[cell].conflict = false }
+        needsUpdate += _lastConflict
+        _lastConflict.removeAll()
+    }
+    
+    func clearSolution(of value: Value, for cell: Int){
         puzzle[cell].solution = nil
-        transition()
     }
     
     func clearNotes(for cell: Int){
         puzzle[cell].notes.removeAll()
     }
     
-    func setSolution(of value: Value, for cell: Int, transition: (Bool) -> ()) {
-        validateSolution(of: value, for: cell) { (success) in
-            if success {
-                puzzle[cell].solution = value
-                transition(true)
-            } else {
-                puzzle[cell].state = .conflict
-                // TODO: locate other cells in conflict and mark them
-            }
+    func toggleNote(of value: Value, for cell: Int){
+        removeEffects()
+        
+        guard mode == .notes, puzzle[cell].solution == nil else { return }
+        if let valueIndex = puzzle[cell].notes.index(of: value) {
+            puzzle[cell].notes.remove(at: valueIndex)
+        } else {
+            puzzle[cell].notes.append(value)
         }
     }
     
-    func validateSolution(of: Value, for cell: Int, completion: (Bool) -> ()) {
-        // TODO: validate
-        completion(true)
+    func setSolution(of value: Value, for position: Position) {
+        removeEffects()
+        
+        func validSolution(of value: Value, for position: Position) -> Bool {
+            var success = true
+            let checkList = Position.colIndices(position.col) + Position.rowIndices(position.row) + Position.blockIndices(position.block)
+            checkList.filter{$0 != position.toIndex}.forEach{(cell) in
+                if let solution = puzzle[cell].solution, solution == value {
+                    puzzle[cell].conflict = true
+                    _lastConflict.append(cell)
+                    success = false
+                }
+            }
+            return success
+        }
+        
+        let cell = position.toIndex
+        guard puzzle[cell].state != .permanent else { return }
+        
+        if validSolution(of: value, for: position) {
+            puzzle[cell].solution = value
+            puzzle[cell].state = .solution
+            puzzle[cell].notes.removeAll()
+        } else {
+            puzzle[cell].conflict = true
+            _lastConflict.append(cell)
+            needsUpdate += _lastConflict
+        }
     }
 }

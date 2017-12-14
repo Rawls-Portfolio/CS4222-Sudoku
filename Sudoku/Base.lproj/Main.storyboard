@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,7 +15,7 @@
         <!--Puzzle View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PuzzleViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Game" id="BYZ-38-t0r" customClass="PuzzleViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m8J-J8-f5Z">
                                 <rect key="frame" x="15" y="61" width="345" height="345"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="HtM-9B-QRj" customClass="SudokuLayout" customModule="Sudoku" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PuzzleCell" id="n01-Ev-3nT" customClass="PuzzleViewCell" customModule="Sudoku" customModuleProvider="target">
@@ -36,55 +36,55 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5so-ik-4ct" customClass="NotesView" customModule="Sudoku" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="one" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL5-Mb-XRc" userLabel="1">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="one" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL5-Mb-XRc" userLabel="1" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="16.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="two" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABV-NJ-aUE" userLabel="2">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="two" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABV-NJ-aUE" userLabel="2" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
                                                             <rect key="frame" x="17" y="0.0" width="16.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="three" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPS-xd-sZF" userLabel="3">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="three" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPS-xd-sZF" userLabel="3" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
                                                             <rect key="frame" x="33.5" y="0.0" width="16.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="four" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-d9-Uny" userLabel="4">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="four" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-d9-Uny" userLabel="4" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="17" width="16.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="five" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyV-ah-N9l" userLabel="5">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="five" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyV-ah-N9l" userLabel="5" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
                                                             <rect key="frame" x="17" y="17" width="16.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="six" text="6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2R-yq-kPz">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="six" text="6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2R-yq-kPz" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
                                                             <rect key="frame" x="33.5" y="17" width="16.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="seven" text="7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFL-AZ-LmB">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="seven" text="7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFL-AZ-LmB" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="33.5" width="16.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eight" text="8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9k-u6-O3K">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eight" text="8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9k-u6-O3K" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
                                                             <rect key="frame" x="17" y="33.5" width="16.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nine" text="9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37u-v5-J7S">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nine" text="9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37u-v5-J7S" customClass="NotesLabel" customModule="Sudoku" customModuleProvider="target">
                                                             <rect key="frame" x="33.5" y="33.5" width="16.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -189,22 +189,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pw-Bx-PWW" customClass="MenuView" customModule="Sudoku" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="537.5" width="375" height="129.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4h7-gY-7eg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="4h7-gY-7eg">
+                                        <rect key="frame" x="20" y="20" width="335" height="89.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXy-ck-yMM" userLabel="Mode">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="129.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="85" height="89.5"/>
                                                 <state key="normal" title="Mode"/>
                                                 <connections>
                                                     <action selector="modeButtonPressed:" destination="2pw-Bx-PWW" eventType="touchUpInside" id="Nkz-j1-9WK"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6p-HP-vKQ" userLabel="Number">
-                                                <rect key="frame" x="125" y="0.0" width="125" height="129.5"/>
+                                                <rect key="frame" x="125" y="0.0" width="85" height="89.5"/>
                                                 <state key="normal" title="Number"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnJ-pf-0dJ" userLabel="NewGame">
-                                                <rect key="frame" x="250" y="0.0" width="125" height="129.5"/>
+                                                <rect key="frame" x="250" y="0.0" width="85" height="89.5"/>
                                                 <state key="normal" title="NewGame"/>
                                                 <connections>
                                                     <action selector="newGameButtonPressed:" destination="2pw-Bx-PWW" eventType="touchUpInside" id="xM8-0p-lLo"/>
@@ -213,12 +213,12 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="4h7-gY-7eg" firstAttribute="width" secondItem="2pw-Bx-PWW" secondAttribute="width" id="1q5-DL-yAf"/>
-                                    <constraint firstItem="4h7-gY-7eg" firstAttribute="leading" secondItem="2pw-Bx-PWW" secondAttribute="leading" id="K3g-V0-agj"/>
-                                    <constraint firstItem="4h7-gY-7eg" firstAttribute="height" secondItem="2pw-Bx-PWW" secondAttribute="height" id="RAu-jX-wKm"/>
-                                    <constraint firstItem="4h7-gY-7eg" firstAttribute="top" secondItem="2pw-Bx-PWW" secondAttribute="top" id="b46-gI-kfp"/>
+                                    <constraint firstAttribute="bottom" secondItem="4h7-gY-7eg" secondAttribute="bottom" constant="20" id="49q-oT-R2y"/>
+                                    <constraint firstItem="4h7-gY-7eg" firstAttribute="leading" secondItem="2pw-Bx-PWW" secondAttribute="leading" constant="20" id="K3g-V0-agj"/>
+                                    <constraint firstAttribute="trailing" secondItem="4h7-gY-7eg" secondAttribute="trailing" constant="20" id="aBY-1B-2ig"/>
+                                    <constraint firstItem="4h7-gY-7eg" firstAttribute="top" secondItem="2pw-Bx-PWW" secondAttribute="top" constant="20" id="b46-gI-kfp"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="modeButton" destination="fXy-ck-yMM" id="Sbx-K5-bJO"/>
@@ -256,6 +256,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Selection View Controller-->
+        <scene sceneID="RYq-Jv-MgI">
+            <objects>
+                <viewController storyboardIdentifier="Selection" id="GSn-kr-EfB" customClass="SelectionViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cwN-H3-jKc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m43-L0-GWo">
+                                <rect key="frame" x="15" y="35" width="345" height="345"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="m43-L0-GWo" secondAttribute="height" multiplier="1:1" id="LwK-6U-K9x"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m43-L0-GWo" firstAttribute="leading" secondItem="QvZ-lV-i68" secondAttribute="leading" constant="15" id="CX5-e3-jpK"/>
+                            <constraint firstItem="m43-L0-GWo" firstAttribute="top" secondItem="QvZ-lV-i68" secondAttribute="top" constant="15" id="DYj-pi-cj0"/>
+                            <constraint firstItem="QvZ-lV-i68" firstAttribute="trailing" secondItem="m43-L0-GWo" secondAttribute="trailing" constant="15" id="UmE-em-VIs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QvZ-lV-i68"/>
+                    </view>
+                    <connections>
+                        <outlet property="replicatorView" destination="m43-L0-GWo" id="tM3-cR-n61"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uJ2-KD-1e9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1220" y="34"/>
         </scene>
         <!--Number Selection View Controller-->
         <scene sceneID="1YB-ie-WGP">
@@ -347,6 +379,7 @@
                             <constraint firstItem="PhU-lL-YjP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="atx-LL-dg9" secondAttribute="leading" constant="20" symbolic="YES" id="u3K-bK-Scd"/>
                             <constraint firstAttribute="bottom" secondItem="HDe-g7-z54" secondAttribute="bottom" constant="20" symbolic="YES" id="xt7-0Y-MLQ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Uv1-Bv-Q6u"/>
                     </view>
                     <connections>
                         <outletCollection property="labels" destination="gFy-CX-JkX" collectionClass="NSMutableArray" id="jaU-NQ-sMK"/>
@@ -362,7 +395,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFL-sP-FQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73" y="561"/>
+            <point key="canvasLocation" x="52" y="570"/>
         </scene>
     </scenes>
 </document>

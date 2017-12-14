@@ -20,6 +20,12 @@ class NumberSelectionViewController: UIViewController {
         super.viewDidLoad()
         view.layer.borderColor = UIColor.gray.cgColor
         view.layer.borderWidth = 2
+        view.layer.cornerRadius = 10.0
+        
+        view.layer.shadowColor = UIColor.gray.cgColor
+        view.layer.shadowRadius = 10.0
+        view.layer.shadowOpacity = 0.8
+        view.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
         prepareLabels()
     }
     // MARK: - Gesture Recognition Functions
@@ -36,7 +42,6 @@ class NumberSelectionViewController: UIViewController {
             print("label identification failed")
             return
         }
-        print("\(value) \(#function)")
         delegate?.setActive(value: value)
         
     }

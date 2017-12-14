@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PuzzleViewController: UIViewController {
+class PuzzleViewController: StyleViewController {
 
     // MARK: - Properties
     var model: PuzzleModel!
@@ -26,7 +26,8 @@ class PuzzleViewController: UIViewController {
         
         menu.delegate = self
         menu.prepareButtons()
-    
+        menu.numberButton.setImage(model.active.image, for: .normal)
+        menu.modeButton.setImage(model.mode.image, for: .normal)
         numberSelectionPlaceholder.isHidden = true
     }
     
@@ -37,18 +38,92 @@ class PuzzleViewController: UIViewController {
         }
     }
     
-    func highlight(for position: Position){
-        // TODO: change view only, not the model
-        reloadCells(from: position)
-    }
-
-    func transition(to mode: Mode){
-        // TODO: from view to view
+    // MARK: - Cell Update Methods
+    func highlightPosition(_ position: Position){
+        var indices = [Int]()
+        indices += Position.rowIndices(position.row) + Position.colIndices(position.col) + Position.blockIndices(position.block)
+        model.applyHighlights(to: indices)
+        reloadCells()
     }
     
-    // MARK: - Gesture Recognition Functions
+    func getCellPosition(atPoint point: CGPoint) -> Position? {
+        guard let selectedIndexPath: IndexPath = puzzleCollectionView.indexPathForItem(at: point),
+            let cell = puzzleCollectionView.cellForItem(at: selectedIndexPath) as? PuzzleViewCell,
+            let position = cell.position
+            else {
+                return nil
+        }
+        return position
+    }
+    
+    func reloadCells(){
+        let indices = Array(Set(model.needsUpdate)) // remove duplicates
+        let paths = indices.map{IndexPath(item: $0, section: 0)}
+        puzzleCollectionView.reloadItems(at: paths)
+        model.needsUpdate.removeAll()
+        
+    }
+}
+
+// MARK: - Menu View Delegate Methods
+extension PuzzleViewController: MenuViewDelegate {
+    func displayNewGameMenu() {
+        // TODO: new game (pop up with level selection/restart)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let selectionView = storyboard.instantiateViewController(withIdentifier: "Selection") as? SelectionViewController else { return }
+        selectionView.willMove(toParentViewController: self)
+        addChildViewController(selectionView)
+        view.addSubview(selectionView.view)
+        selectionView.didMove(toParentViewController: self)
+    }
+    
+    func toggleMode() {
+        model.toggleMode()
+        menu.modeButton.setImage(model.mode.image, for: .normal)
+    }
+    
+    func setActive(value: Value) {
+        numberSelectionPlaceholder.isHidden = true
+        model.active = value
+        menu.numberButton.setImage(model.active.image, for: .normal)
+    }
+    
+    func displayNumberSelection() {
+        numberSelectionPlaceholder.isHidden = false
+    }
+    
+    func highlightActive(){
+        model.removeEffects()
+        let indices = model.getActiveIndices()
+        model.applyHighlights(to: indices)
+        reloadCells()
+        
+    }
+}
+
+// MARK: - Collection View Delegate methods located in Style.swift
+// MARK: - Collection View Data Source Methods
+extension PuzzleViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 81;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PuzzleCell", for: indexPath) as? PuzzleViewCell else {
+            return PuzzleViewCell()
+        }
+        
+        cell.decorate(with: model.getCell(for: indexPath.row))
+        return cell
+    }
+}
+
+// MARK: - Gesture Recognition Functions
+extension PuzzleViewController {
     func preparePuzzleCollectionView() {
         puzzleCollectionView.dataSource = self
+        puzzleCollectionView.delegate = self
         let sideLength = view.frame.size.width - 20
         let frame = CGRect(x: 10, y: 40.0 , width: sideLength , height: sideLength)
         puzzleCollectionView.frame = frame
@@ -64,6 +139,9 @@ class PuzzleViewController: UIViewController {
         puzzleCollectionView.addGestureRecognizer(longPressGesture)
     }
     
+    // when cell is single tapped, set solution of cell to that of the active value in solution mode
+    // "    "   "   "   ", toggle note value to cell of that of the active value in note mode
+    // when cell is double tapped, set solution of cell to that of the note layer, if possible
     @objc func cellTapped(gesture: UITapGestureRecognizer){
         let point = gesture.location(in: puzzleCollectionView)
         guard let position = getCellPosition(atPoint: point) else {
@@ -71,30 +149,29 @@ class PuzzleViewController: UIViewController {
             return
         }
         
-        var solution: Value?
+        var value: Value?
         switch(gesture.numberOfTapsRequired){
         case 1:
-            solution = model.active
-            highlight(for: position)
+            if model.mode == .solution {
+                value = model.active
+            } else {
+                model.toggleNote(of: model.active, for: position.toIndex)
+            }
         case 2:
-            solution = model.getNoteValue(for: position.toIndex)
-        
+            value = model.getNoteValue(for: position.toIndex)
         default: print("unknown gesture")
         }
         
-        if let value = solution {
-            model.setSolution(of: value, for: position.toIndex) { (success) in
-                if success {
-                    transition(to: .solution)
-                }
-            }
+        if let solution = value {
+            model.setSolution(of: solution, for: position)
         }
-        reloadCells(from: position)
+        
+        highlightPosition(position)
+        
     }
-
     
     // TODO: long press on a selected cell will display an animated pop-up menu.
-     @objc func cellPressed(gesture: UITapGestureRecognizer) {
+    @objc func cellPressed(gesture: UITapGestureRecognizer) {
         if gesture.state != .ended {
             return
         }
@@ -103,95 +180,18 @@ class PuzzleViewController: UIViewController {
             return
         }
         
-        /* TODO:
-         execute one of these functions in a completion closure
+        /* TODO: execute one of these functions in a completion closure
          func clearSelected() {
          
          }
          
          func setPermanentState() {
-            // if solution is set
+         // if solution is set
          }
          
          func selectedHint() {
          
          }
          */
-    }
-    
-    func getCellPosition(atPoint point: CGPoint) -> Position? {
-        guard let selectedIndexPath: IndexPath = puzzleCollectionView.indexPathForItem(at: point),
-            let cell = puzzleCollectionView.cellForItem(at: selectedIndexPath) as? PuzzleViewCell,
-            let position = cell.position
-            else {
-                return nil
-        }
-        return position
-    }
-    
-    func reloadCell(atPoint point: CGPoint){
-        guard let selectedIndexPath: IndexPath = puzzleCollectionView.indexPathForItem(at: point) else {
-            return
-        }
-        puzzleCollectionView.reloadItems(at: [selectedIndexPath])
-    }
-    
-    func reloadCells(from position: Position){
-        var indices = [Int]()
-        
-        indices += position.rowIndices(position.row)
-        indices += position.colIndices(position.col)
-        indices += position.blockIndices(position.block)
-
-        // filter out duplicates
-        let paths = Array(Set(indices)).map{IndexPath(item: $0, section: 0)}
-        
-        puzzleCollectionView.reloadItems(at: paths)
-    }
-}
-
-// MARK: - Collection View Data Source Methods
-extension PuzzleViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 81;
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PuzzleCell", for: indexPath) as? PuzzleViewCell else {
-            return PuzzleViewCell()
-        }
-     
-        cell.decorate(with: model.getCell(for: indexPath.row))
-        return cell
-    }
-}
-
-// MARK: - Menu View Delegate Methods
-extension PuzzleViewController: MenuViewDelegate {
-    
-    func displayNewGameMenu() {
-        // TODO: new game (pop up with level selection/restart)
-    }
-    
-    func toggleMode() {
-        model.toggleMode()
-    }
-    
-    func setActive(value: Value) {
-        print(#function)
-        numberSelectionPlaceholder.isHidden = true
-        model.active = value
-        // TODO: display active
-    }
-    
-    func displayNumberSelection() {
-        print(#function)
-        numberSelectionPlaceholder.isHidden = false
-    }
-    
-    func highlightActive(){
-        let indices = model.getActiveIndices()
-        // TODO: update all cells with active value displayed
-        // puzzleCollectionView.reloadItems(at: [IndexPath])
     }
 }

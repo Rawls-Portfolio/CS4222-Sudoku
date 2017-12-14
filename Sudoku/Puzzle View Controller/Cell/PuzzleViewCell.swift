@@ -31,11 +31,7 @@ class PuzzleViewCell: UICollectionViewCell {
     
     // MARK: - Methods
     func decorate(with cell: Cell){
-        self.layer.borderColor = UIColor.black.cgColor
-        self.layer.borderWidth = 1
         self._position = cell.position
-        self.notes.labels.forEach{$0.isHidden = true}
-        // self.solution.isHidden = true
         self.solution.label.text = cell.solution?.rawValue ?? " "
         
     }

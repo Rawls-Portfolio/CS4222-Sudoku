@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Mode {
     case notes, solution
@@ -17,10 +18,25 @@ enum Mode {
         case .solution: return .notes
         }
     }
+    
+    var description: String {
+        switch(self){
+        case .notes: return "Notes"
+        case .solution: return "Solution"
+        }
+    }
+    
+    // all app icons and images provided by iconsdb.com
+    var image: UIImage {
+        switch(self){
+        case .notes: return #imageLiteral(resourceName: "Pencil")
+        case .solution: return #imageLiteral(resourceName: "Pen")
+        }
+    }
 }
 
 enum State {
-    case normal, permanent, solution, conflict
+    case neutral, permanent, solution
 }
 
 struct Cell {
@@ -28,12 +44,15 @@ struct Cell {
     var notes: [Value]
     var solution: Value?
     var state: State
-    
+    var conflict: Bool
+    var highlight: Bool
     init(position: Position, solution: Value?){
         self.position = position
         self.notes = [Value]()
         self.solution = solution
-        self.state = solution == nil ? .normal : .permanent
+        self.state = solution == nil ? .neutral : .permanent
+        self.conflict = false
+        self.highlight = false
     }
 }
 
@@ -50,7 +69,7 @@ struct Position {
         return "Row: \(row + 1), Col: \(col + 1), Block: \(block)"
     }
     
-    var rowIndices: (Int) -> [Int] = {(row) in
+    static var rowIndices: (_ row: Int) -> [Int] = { (row) in
         var indices = [Int]()
         let startOfRow = 9 * row
         for index in startOfRow..<startOfRow+9{
@@ -59,7 +78,7 @@ struct Position {
         return indices
     }
     
-    var colIndices: (Int) -> [Int] = {(col) in
+    static var colIndices: (_ col: Int) -> [Int] = { (col) in
         var indices = [Int]()
         for multiplier in 0..<9 {
             indices.append(multiplier * 9 + col)
@@ -67,7 +86,7 @@ struct Position {
         return indices
     }
     
-    var blockIndices: (Int) -> [Int] = {(block) in
+    static var blockIndices: (_ block: Int) -> [Int] = {(block) in
         switch (block){
         case 0: return [0, 1, 2, 9, 10, 11, 18, 19, 20]
         case 1: return [3, 4, 5, 12, 13, 14, 21, 22, 23]
@@ -86,24 +105,24 @@ struct Position {
         col = arrayIndex % 9
         row = arrayIndex / 9
         switch(arrayIndex){
-        case let x where blockIndices(0).contains(x):
+        case let x where Position.blockIndices(0).contains(x):
             block = 0
-        case let x where blockIndices(1).contains(x):
+        case let x where Position.blockIndices(1).contains(x):
             block = 1
-        case let x where blockIndices(2).contains(x):
+        case let x where Position.blockIndices(2).contains(x):
             block = 2
-        case let x where blockIndices(3).contains(x):
+        case let x where Position.blockIndices(3).contains(x):
             block = 3
-        case let x where blockIndices(4).contains(x):
+        case let x where Position.blockIndices(4).contains(x):
             block = 4
-        case let x where blockIndices(5).contains(x):
+        case let x where Position.blockIndices(5).contains(x):
             block = 5
-        case let x where blockIndices(6).contains(x):
+        case let x where Position.blockIndices(6).contains(x):
             block = 6
-        case let x where blockIndices(7).contains(x):
+        case let x where Position.blockIndices(7).contains(x):
             block = 7
-        case let x where blockIndices(8).contains(x):
-            block = 4
+        case let x where Position.blockIndices(8).contains(x):
+            block = 8
         default:
             block = -1;
             print("Error: Invalid block assignment")
@@ -126,6 +145,21 @@ enum Value: String{
     }
     var digit: Int {
         return self.hashValue + 1
+    }
+    
+    // all app icons and images provided by iconsdb.com
+    var image: UIImage {
+        switch(self){
+        case .one: return #imageLiteral(resourceName: "One")
+        case .two: return #imageLiteral(resourceName: "Two")
+        case .three: return #imageLiteral(resourceName: "Three")
+        case .four: return #imageLiteral(resourceName: "Four")
+        case .five: return #imageLiteral(resourceName: "Five")
+        case .six: return #imageLiteral(resourceName: "Six")
+        case .seven: return #imageLiteral(resourceName: "Seven")
+        case .eight: return #imageLiteral(resourceName: "Eight")
+        case .nine: return #imageLiteral(resourceName: "Nine")
+        }
     }
     static func of(_ integer: Int)-> Value? {
         switch(integer){
