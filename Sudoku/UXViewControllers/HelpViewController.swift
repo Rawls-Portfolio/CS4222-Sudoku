@@ -44,6 +44,10 @@ class HelpViewController: StyleViewController {
         text.textColor = Style.permanentTextColor
     }
     
+    override func viewDidLayoutSubviews() {
+        text.setContentOffset(.zero, animated: false)
+    }
+    
     func addSwipeGestures(){
         let swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(returnToGame))
         let swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(returnToGame))
