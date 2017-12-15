@@ -48,6 +48,9 @@ class MenuView: UIView {
         numberButton.setTitle("", for: .normal)
         newGameButton.setTitle("", for: .normal)
         newGameButton.setImage(#imageLiteral(resourceName: "NewGame"), for: .normal)
+        numberButton.imageView?.contentMode = .scaleAspectFit
+        modeButton.imageView?.contentMode = .scaleAspectFit
+        newGameButton.imageView?.contentMode = .scaleAspectFit
     }
     
     // MARK: - IBActions

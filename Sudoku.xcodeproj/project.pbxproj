@@ -27,6 +27,7 @@
 		26B094D21FE1F7810050CC31 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B094D11FE1F7810050CC31 /* SelectionViewController.swift */; };
 		26B094D71FE239630050CC31 /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B094D61FE239630050CC31 /* StyleViewController.swift */; };
 		26E306921FE4481700511AAE /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E306911FE4481700511AAE /* HelpViewController.swift */; };
+		26E306941FE4677200511AAE /* ReplicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E306931FE4677200511AAE /* ReplicatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		26B094D11FE1F7810050CC31 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		26B094D61FE239630050CC31 /* StyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
 		26E306911FE4481700511AAE /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		26E306931FE4677200511AAE /* ReplicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			children = (
 				26B094D11FE1F7810050CC31 /* SelectionViewController.swift */,
 				26E306911FE4481700511AAE /* HelpViewController.swift */,
+				26E306931FE4677200511AAE /* ReplicatorView.swift */,
 			);
 			path = UXViewControllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				267F23E21FCD22940069282B /* NotesView.swift in Sources */,
 				2609D25A1FCF40E900337CB8 /* ContainerViewController.swift in Sources */,
 				26A6AF2A1FC7E888001827BA /* PuzzleViewController.swift in Sources */,
+				26E306941FE4677200511AAE /* ReplicatorView.swift in Sources */,
 				267F23E51FCD22C50069282B /* SolutionView.swift in Sources */,
 				2609D2601FD06F4C00337CB8 /* Style.swift in Sources */,
 				26A6AF301FC7E888001827BA /* Sudoku.xcdatamodeld in Sources */,
@@ -415,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -466,7 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -487,7 +491,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Sudoku/Puzzle Generator/Sudoku-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -503,7 +507,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sudoku/Puzzle Generator/Sudoku-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

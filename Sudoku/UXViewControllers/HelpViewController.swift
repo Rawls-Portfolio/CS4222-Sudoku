@@ -35,8 +35,8 @@ class HelpViewController: StyleViewController {
         Double tapping on that cell when a single value is shown in notes for that cell will cause that number to be entered as the solution for that cell.
         
         Long pressing on a cell will display a menu.
-        - Clear Cell Contents: clears both solution and notes
-        - Make Solution Permanent: this value will be saved and be rendered uneditable, even when restarting the game
+        - Clear Contents: clears both solution and notes
+        - Make Permanent: this value will be saved and be rendered uneditable, even when restarting the game
         - Get Hint: fill the cell with the permanent solution.
         """
         text.clipsToBounds = true
