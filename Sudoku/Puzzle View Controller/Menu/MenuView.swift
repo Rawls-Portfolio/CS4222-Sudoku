@@ -15,6 +15,13 @@ protocol MenuViewDelegate: class {
     func highlightPosition(_ position: Position)
     func highlightActive()
     func toggleMode()
+    func clearBoard()
+    func returnToSelection()
+    func closeMenu()
+    func clearSelectedCell()
+    func showSelectedHint()
+    func setPermanentState()
+    func showHelp()
 }
 
 class MenuView: UIView {
@@ -58,7 +65,7 @@ class MenuView: UIView {
     }
 
     @objc func showNumberSelection(gesture: UIGestureRecognizer){
-        if gesture.state != .ended {
+        if gesture.state != .began {
             return
         }
         

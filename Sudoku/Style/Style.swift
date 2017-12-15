@@ -15,6 +15,25 @@ class Style {
     static var conflictBGColor = UIColor(red: 219/255, green: 145/255, blue: 154/255, alpha: 1.0) // pink
     static var highlightBGColor = UIColor(red: 198/255, green: 207/255, blue: 167/255, alpha: 1.0) // mint
     static var background = UIColor(red: 182/255, green: 175/255, blue: 164/255, alpha: 1.0) // beige
+    
+    static func applyOverlayStyle(_ layer: CALayer){
+        layer.backgroundColor = Style.normalBGColor.cgColor
+        layer.borderColor = Style.conflictBGColor.cgColor
+        layer.borderWidth = 2
+        layer.cornerRadius = 10.0
+        
+        layer.shadowColor = Style.highlightBGColor.cgColor
+        layer.shadowRadius = 10.0
+        layer.shadowOpacity = 0.8
+        layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
+    }
+    
+    static func applyMenuStyle(_ view: UIView){
+        view.layer.backgroundColor = Style.normalBGColor.cgColor
+        view.layer.cornerRadius = 10.0
+        view.clipsToBounds = true
+        view.isHidden = true
+    }
 }
 
 

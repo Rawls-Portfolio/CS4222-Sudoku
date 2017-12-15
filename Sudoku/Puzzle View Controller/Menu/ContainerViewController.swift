@@ -8,27 +8,25 @@
 
 import UIKit
 
-class NumberSelectionViewController: UIViewController {
+class ContainerViewController: UIViewController {
     // MARK: - Properties
     weak var delegate : MenuViewDelegate?
     
     // MARK: - IBOutlets
     @IBOutlet var labels: [UILabel]!
+    @IBOutlet weak var newGameMenu: UIView!
+    @IBOutlet weak var cellOptionsMenu: UIView!
     
     // MARK: - View Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.backgroundColor = Style.normalBGColor.cgColor
-        view.layer.borderColor = Style.conflictBGColor.cgColor
-        view.layer.borderWidth = 2
-        view.layer.cornerRadius = 10.0
+        Style.applyOverlayStyle(view.layer)
+        Style.applyMenuStyle(newGameMenu)
+        Style.applyMenuStyle(cellOptionsMenu)
         
-        view.layer.shadowColor = Style.highlightBGColor.cgColor
-        view.layer.shadowRadius = 10.0
-        view.layer.shadowOpacity = 0.8
-        view.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
         prepareLabels()
     }
+    
     // MARK: - Gesture Recognition Functions
     func prepareLabels(){
         labels.forEach{(label) in
@@ -36,6 +34,34 @@ class NumberSelectionViewController: UIViewController {
             tapGesture.numberOfTapsRequired = 1
             label.addGestureRecognizer(tapGesture)
         }
+    }
+    
+    @IBAction func restartPressed(_ sender: UIButton) {
+        delegate?.clearBoard()
+    }
+
+    @IBAction func newGamePressed(_ sender: UIButton) {
+        delegate?.returnToSelection()
+    }
+    
+    @IBAction func closeMenuPressed(_ sender: UIButton) {
+        delegate?.closeMenu()
+    }
+    
+    @IBAction func clearContentsPressed(_ sender: UIButton) {
+        delegate?.clearSelectedCell()
+    }
+    
+    @IBAction func makePermanentPressed(_ sender: UIButton) {
+        delegate?.setPermanentState()
+    }
+    
+    @IBAction func getHintPressed(_ sender: UIButton) {
+        delegate?.showSelectedHint()
+    }
+    
+    @IBAction func helpPressed(_ sender: UIButton) {
+        delegate?.showHelp()
     }
     
     @objc func labelTapped(gesture: UIGestureRecognizer){

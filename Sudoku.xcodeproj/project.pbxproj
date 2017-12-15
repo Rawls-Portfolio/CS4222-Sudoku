@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2609D25A1FCF40E900337CB8 /* NumberSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2609D2591FCF40E900337CB8 /* NumberSelectionViewController.swift */; };
+		2609D25A1FCF40E900337CB8 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2609D2591FCF40E900337CB8 /* ContainerViewController.swift */; };
 		2609D2601FD06F4C00337CB8 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2609D25F1FD06F4C00337CB8 /* Style.swift */; };
 		264A63FF1FCDF885000A9867 /* SudokuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264A63FE1FCDF885000A9867 /* SudokuLayout.swift */; };
 		267F23DC1FCD1B9E0069282B /* PuzzleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267F23DB1FCD1B9E0069282B /* PuzzleModel.swift */; };
@@ -26,6 +26,7 @@
 		26A6AF4D1FC7E89C001827BA /* sugen.c in Sources */ = {isa = PBXBuildFile; fileRef = 26A6AF4C1FC7E89C001827BA /* sugen.c */; };
 		26B094D21FE1F7810050CC31 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B094D11FE1F7810050CC31 /* SelectionViewController.swift */; };
 		26B094D71FE239630050CC31 /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B094D61FE239630050CC31 /* StyleViewController.swift */; };
+		26E306921FE4481700511AAE /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E306911FE4481700511AAE /* HelpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2609D2591FCF40E900337CB8 /* NumberSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectionViewController.swift; sourceTree = "<group>"; };
+		2609D2591FCF40E900337CB8 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		2609D25F1FD06F4C00337CB8 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		2639B1051FCD566000F3C6D7 /* callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = callback.h; sourceTree = "<group>"; };
 		264A63FE1FCDF885000A9867 /* SudokuLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuLayout.swift; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		26A6AF4C1FC7E89C001827BA /* sugen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sugen.c; sourceTree = "<group>"; };
 		26B094D11FE1F7810050CC31 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		26B094D61FE239630050CC31 /* StyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
+		26E306911FE4481700511AAE /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				269D87201FCF2699004E474C /* MenuView.swift */,
-				2609D2591FCF40E900337CB8 /* NumberSelectionViewController.swift */,
+				2609D2591FCF40E900337CB8 /* ContainerViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -158,7 +160,7 @@
 			children = (
 				26A6AF2B1FC7E888001827BA /* Main.storyboard */,
 				26B094D31FE236DF0050CC31 /* Style */,
-				26B094D01FE1F6A60050CC31 /* Selection View Controller */,
+				26B094D01FE1F6A60050CC31 /* UXViewControllers */,
 				267F23DA1FCD1B700069282B /* Puzzle View Controller */,
 				269D871E1FCF2614004E474C /* Models and Structures */,
 				26A6AF4A1FC7E88F001827BA /* Puzzle Generator */,
@@ -186,12 +188,13 @@
 			path = "Puzzle Generator";
 			sourceTree = "<group>";
 		};
-		26B094D01FE1F6A60050CC31 /* Selection View Controller */ = {
+		26B094D01FE1F6A60050CC31 /* UXViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				26B094D11FE1F7810050CC31 /* SelectionViewController.swift */,
+				26E306911FE4481700511AAE /* HelpViewController.swift */,
 			);
-			path = "Selection View Controller";
+			path = UXViewControllers;
 			sourceTree = "<group>";
 		};
 		26B094D31FE236DF0050CC31 /* Style */ = {
@@ -309,7 +312,7 @@
 			files = (
 				267F23DC1FCD1B9E0069282B /* PuzzleModel.swift in Sources */,
 				267F23E21FCD22940069282B /* NotesView.swift in Sources */,
-				2609D25A1FCF40E900337CB8 /* NumberSelectionViewController.swift in Sources */,
+				2609D25A1FCF40E900337CB8 /* ContainerViewController.swift in Sources */,
 				26A6AF2A1FC7E888001827BA /* PuzzleViewController.swift in Sources */,
 				267F23E51FCD22C50069282B /* SolutionView.swift in Sources */,
 				2609D2601FD06F4C00337CB8 /* Style.swift in Sources */,
@@ -318,6 +321,7 @@
 				264A63FF1FCDF885000A9867 /* SudokuLayout.swift in Sources */,
 				269D87211FCF2699004E474C /* MenuView.swift in Sources */,
 				267F23E01FCD216D0069282B /* PuzzleViewCell.swift in Sources */,
+				26E306921FE4481700511AAE /* HelpViewController.swift in Sources */,
 				26A6AF4D1FC7E89C001827BA /* sugen.c in Sources */,
 				26B094D71FE239630050CC31 /* StyleViewController.swift in Sources */,
 				26A6AF281FC7E888001827BA /* AppDelegate.swift in Sources */,
@@ -411,7 +415,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -462,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

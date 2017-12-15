@@ -21,7 +21,6 @@ class StyleViewController: UIViewController {
         
         let proxyButton = UIButton.appearance()
         proxyButton.tintColor = Style.permanentTextColor
-        
         let proxyLabel = NotesLabel.appearance()
         proxyLabel.textColor = Style.notesTextColor
     }

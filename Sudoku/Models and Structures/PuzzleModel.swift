@@ -57,6 +57,8 @@ class PuzzleModel {
             puzzle.append(newCell)
         }
         
+        print("actual difficulty: \(difficulty)")
+        
         free(data) //dynamically allocated in the generator
     }
     
@@ -66,6 +68,18 @@ class PuzzleModel {
     
     func getCell(for cell: Int)-> Cell {
         return puzzle[cell]
+    }
+    
+    func showHint(for cell: Int) {
+        removeEffects()
+        puzzle[cell].solution = Value.of(solution[cell])
+        puzzle[cell].state = .permanent
+        needsUpdate.append(cell)
+    }
+    
+    func setPermanentState(of cell: Int){
+        puzzle[cell].state = .permanent
+        needsUpdate.append(cell)
     }
     
     func getNoteValue(for cell: Int) -> Value? {
@@ -98,12 +112,25 @@ class PuzzleModel {
         _lastConflict.removeAll()
     }
     
-    func clearSolution(of value: Value, for cell: Int){
+    func clearSolution(for cell: Int){
+        guard puzzle[cell].state != .permanent else { return }
         puzzle[cell].solution = nil
+        needsUpdate.append(cell)
     }
     
     func clearNotes(for cell: Int){
         puzzle[cell].notes.removeAll()
+        needsUpdate.append(cell)
+    }
+    
+    func clearAll(){
+        for cell in 0..<81{
+            clearSolution(for: cell)
+            clearNotes(for: cell)
+            puzzle[cell].state = puzzle[cell].solution == nil ? .neutral : .permanent
+            puzzle[cell].conflict = false
+            puzzle[cell].highlight = false
+        }
     }
     
     func toggleNote(of value: Value, for cell: Int){

@@ -11,30 +11,32 @@ class PuzzleViewController: StyleViewController {
 
     // MARK: - Properties
     var model: PuzzleModel!
+    var activeCell: Int?
     
     // MARK: - IBOutlets
     @IBOutlet weak var puzzleCollectionView: UICollectionView!
     @IBOutlet weak var menu: MenuView!
-    @IBOutlet weak var numberSelectionPlaceholder: UIView!
+    @IBOutlet weak var containerView: UIView!
+    weak var containerChild: ContainerViewController?
     
     //MARK: - View Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // model = PuzzleModel(targetScore: 170)
-        
         preparePuzzleCollectionView()
         
         menu.delegate = self
         menu.prepareButtons()
         menu.numberButton.setImage(model.active.image, for: .normal)
         menu.modeButton.setImage(model.mode.image, for: .normal)
-        numberSelectionPlaceholder.isHidden = true
+        containerView.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super .prepare(for: segue, sender: sender)
-        if let numberSelection = segue.destination as? NumberSelectionViewController {
-            numberSelection.delegate = self
+        if let cv = segue.destination as? ContainerViewController {
+            cv.delegate = self
+            containerChild = cv
+
         }
     }
     
@@ -67,15 +69,68 @@ class PuzzleViewController: StyleViewController {
 
 // MARK: - Menu View Delegate Methods
 extension PuzzleViewController: MenuViewDelegate {
-    func displayNewGameMenu() {
-        // TODO: new game (pop up with level selection/restart)
-        
+    func showHelp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let selectionView = storyboard.instantiateViewController(withIdentifier: "Selection") as? SelectionViewController else { return }
-        selectionView.willMove(toParentViewController: self)
-        addChildViewController(selectionView)
-        view.addSubview(selectionView.view)
-        selectionView.didMove(toParentViewController: self)
+        guard let helpView = storyboard.instantiateViewController(withIdentifier: "Help") as? HelpViewController else { return }
+        helpView.willMove(toParentViewController: self)
+        addChildViewController(helpView)
+        view.addSubview(helpView.view)
+        helpView.didMove(toParentViewController: self)
+    }
+    
+    func clearSelectedCell() {
+        containerChild!.cellOptionsMenu.isHidden = true
+        containerView.isHidden = true
+        guard let cell = activeCell else { return }
+        model.clearSolution(for: cell)
+        model.clearNotes(for: cell)
+        activeCell = nil
+        reloadCells()
+    }
+    
+    func showSelectedHint() {
+        containerChild!.cellOptionsMenu.isHidden = true
+        containerView.isHidden = true
+        guard let cell = activeCell else { return }
+        model.showHint(for: cell)
+        activeCell = nil
+        reloadCells()
+    }
+    
+    func setPermanentState() {
+        containerChild!.cellOptionsMenu.isHidden = true
+        containerView.isHidden = true
+        guard let cell = activeCell else { return }
+        model.setPermanentState(of: cell)
+        activeCell = nil
+        reloadCells()
+    }
+    
+    func clearBoard() {
+        containerChild!.newGameMenu.isHidden = true
+        containerView.isHidden = true
+        model.clearAll()
+        puzzleCollectionView.reloadData()
+    }
+    
+    func returnToSelection() {
+        view.removeFromSuperview()
+        removeFromParentViewController()
+    }
+    
+    func closeMenu(){
+        containerChild!.cellOptionsMenu.isHidden = true
+        containerChild!.newGameMenu.isHidden = true
+        containerView.isHidden = true
+    }
+    func displayNewGameMenu() {
+        containerChild!.newGameMenu.isHidden = false
+        let fade = CABasicAnimation(keyPath: "opacity")
+        fade.duration = 0.25
+        fade.fromValue = 0
+        fade.toValue = 1
+        containerView.layer.add(fade, forKey: nil)
+        containerView.isHidden = false
     }
     
     func toggleMode() {
@@ -84,13 +139,20 @@ extension PuzzleViewController: MenuViewDelegate {
     }
     
     func setActive(value: Value) {
-        numberSelectionPlaceholder.isHidden = true
+        containerView.isHidden = true
         model.active = value
         menu.numberButton.setImage(model.active.image, for: .normal)
+        highlightActive()
     }
     
     func displayNumberSelection() {
-        numberSelectionPlaceholder.isHidden = false
+        let fade = CABasicAnimation(keyPath: "opacity")
+        fade.duration = 0.25
+        fade.fromValue = 0
+        fade.toValue = 1
+        containerView.layer.add(fade, forKey: nil)
+        containerView.isHidden = false
+        
     }
     
     func highlightActive(){
@@ -172,7 +234,7 @@ extension PuzzleViewController {
     
     // TODO: long press on a selected cell will display an animated pop-up menu.
     @objc func cellPressed(gesture: UITapGestureRecognizer) {
-        if gesture.state != .ended {
+        if gesture.state != .began {
             return
         }
         guard let position = getCellPosition(atPoint: gesture.location(in: puzzleCollectionView)) else {
@@ -180,18 +242,13 @@ extension PuzzleViewController {
             return
         }
         
-        /* TODO: execute one of these functions in a completion closure
-         func clearSelected() {
-         
-         }
-         
-         func setPermanentState() {
-         // if solution is set
-         }
-         
-         func selectedHint() {
-         
-         }
-         */
+        activeCell = position.toIndex
+        containerChild!.cellOptionsMenu.isHidden = false
+        let fade = CABasicAnimation(keyPath: "opacity")
+        fade.duration = 0.25
+        fade.fromValue = 0
+        fade.toValue = 1
+        containerView.layer.add(fade, forKey: nil)
+        containerView.isHidden = false
     }
 }
