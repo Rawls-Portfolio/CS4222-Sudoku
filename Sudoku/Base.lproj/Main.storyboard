@@ -182,24 +182,24 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pw-Bx-PWW" customClass="MenuView" customModule="Sudoku" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="419.33333333333326" width="375" height="358.66666666666674"/>
+                                <rect key="frame" x="0.0" y="708" width="375" height="70"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="4h7-gY-7eg">
-                                        <rect key="frame" x="20" y="20" width="335" height="318.66666666666669"/>
+                                        <rect key="frame" x="20" y="20" width="335" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXy-ck-yMM" userLabel="Mode">
-                                                <rect key="frame" x="0.0" y="0.0" width="85" height="318.66666666666669"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
                                                 <state key="normal" title="Mode"/>
                                                 <connections>
                                                     <action selector="modeButtonPressed:" destination="2pw-Bx-PWW" eventType="touchUpInside" id="Nkz-j1-9WK"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6p-HP-vKQ" userLabel="Number">
-                                                <rect key="frame" x="125" y="0.0" width="85" height="318.66666666666669"/>
+                                                <rect key="frame" x="125" y="0.0" width="85" height="30"/>
                                                 <state key="normal" title="Number"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnJ-pf-0dJ" userLabel="NewGame">
-                                                <rect key="frame" x="250" y="0.0" width="85" height="318.66666666666669"/>
+                                                <rect key="frame" x="250" y="0.0" width="85" height="30"/>
                                                 <state key="normal" title="NewGame"/>
                                                 <connections>
                                                     <action selector="newGameButtonPressed:" destination="2pw-Bx-PWW" eventType="touchUpInside" id="xM8-0p-lLo"/>
@@ -225,7 +225,7 @@
                                 </connections>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zW7-Uh-3YE">
-                                <rect key="frame" x="112.66666666666669" y="448.66666666666674" width="150" height="150"/>
+                                <rect key="frame" x="112.66666666666669" y="593" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zW7-Uh-3YE" secondAttribute="height" multiplier="1:1" id="tNk-0f-uSD"/>
                                 </constraints>
@@ -244,13 +244,11 @@
                             <constraint firstItem="zW7-Uh-3YE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7a1-64-ulx"/>
                             <constraint firstItem="zW7-Uh-3YE" firstAttribute="bottom" secondItem="2pw-Bx-PWW" secondAttribute="centerY" id="HcR-zR-K4a"/>
                             <constraint firstItem="zW7-Uh-3YE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M0S-CR-8mS"/>
-                            <constraint firstItem="2pw-Bx-PWW" firstAttribute="top" secondItem="m8J-J8-f5Z" secondAttribute="bottom" id="Ojm-wN-7fe"/>
                             <constraint firstItem="m8J-J8-f5Z" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="QWZ-w9-axU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2pw-Bx-PWW" secondAttribute="trailing" id="T7O-FA-1eZ">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="m8J-J8-f5Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UXB-Ec-lq2"/>
-                            <constraint firstItem="2pw-Bx-PWW" firstAttribute="leading" secondItem="m8J-J8-f5Z" secondAttribute="trailing" id="YYA-v9-YzE"/>
                             <constraint firstItem="zW7-Uh-3YE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="ZqR-B2-MUP"/>
                             <constraint firstItem="m8J-J8-f5Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gr9-CB-kgb"/>
                             <constraint firstItem="zW7-Uh-3YE" firstAttribute="trailing" secondItem="2pw-Bx-PWW" secondAttribute="centerX" id="jLT-D0-o4x"/>
@@ -275,8 +273,6 @@
                                 <exclude reference="ZqR-B2-MUP"/>
                                 <exclude reference="jLT-D0-o4x"/>
                                 <exclude reference="3cc-tU-ykS"/>
-                                <exclude reference="Ojm-wN-7fe"/>
-                                <exclude reference="YYA-v9-YzE"/>
                                 <exclude reference="r3X-32-eSj"/>
                                 <exclude reference="zhw-eu-s3n"/>
                             </mask>
@@ -290,7 +286,6 @@
                                 <include reference="M0S-CR-8mS"/>
                                 <include reference="ZqR-B2-MUP"/>
                                 <include reference="jLT-D0-o4x"/>
-                                <include reference="YYA-v9-YzE"/>
                                 <include reference="r3X-32-eSj"/>
                             </mask>
                         </variation>
@@ -303,7 +298,6 @@
                                 <include reference="M0S-CR-8mS"/>
                                 <include reference="ZqR-B2-MUP"/>
                                 <include reference="jLT-D0-o4x"/>
-                                <include reference="YYA-v9-YzE"/>
                                 <include reference="r3X-32-eSj"/>
                             </mask>
                         </variation>
@@ -316,7 +310,6 @@
                                 <include reference="7a1-64-ulx"/>
                                 <include reference="HcR-zR-K4a"/>
                                 <include reference="3cc-tU-ykS"/>
-                                <include reference="Ojm-wN-7fe"/>
                                 <include reference="zhw-eu-s3n"/>
                             </mask>
                         </variation>
