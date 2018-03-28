@@ -114,6 +114,7 @@ class PuzzleModel {
     
     func clearSolution(for cell: Int){
         guard puzzle[cell].state != .permanent else { return }
+        puzzle[cell].state = .neutral
         puzzle[cell].solution = nil
         needsUpdate.append(cell)
     }

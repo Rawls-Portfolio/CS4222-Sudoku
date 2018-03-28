@@ -41,8 +41,6 @@ class SelectionViewController: StyleViewController {
 
     func setTitle() {
         titleLabel.textColor = Style.notesTextColor
-        titleImage.image = titleImage.image!.withRenderingMode(.alwaysTemplate)
-        titleImage.tintColor = Style.permanentTextColor
     }
 }
 
